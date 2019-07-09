@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 4b7ac4d75529362418956b46a3897f88
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: main/glTF Scene DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29
+    100002: main/glTF Scene DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29/node_damagedHelmet_-6514
+    400000: main/glTF Scene DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29/Transform
+    400002: main/glTF Scene DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29/node_damagedHelmet_-6514/Transform
+    2100000: Material_MR
+    2300000: main/glTF Scene DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29/node_damagedHelmet_-6514/MeshRenderer
+    2800000: Texture_0
+    2800002: Texture_1
+    2800004: Texture_2
+    2800006: Texture_3
+    2800008: Texture_4
+    3300000: main/glTF Scene DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29/node_damagedHelmet_-6514/MeshFilter
+    4300000: mesh_helmet_LP_13930damagedHelmet
+    11400000: glTF data
+    100100000: main
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 75911c45f303c8f45927f5efeaa50cc4, type: 3}
