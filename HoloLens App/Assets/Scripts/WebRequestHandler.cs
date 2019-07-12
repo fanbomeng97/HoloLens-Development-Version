@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using LitJson;
 
 public class WebRequestHandler : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("This can be a local or external resource uri.")]
-    private string baseUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
+    private string baseUri = "http://dummy.restapiexample.com/api/v1/employees";
 
     void Start()
     {
@@ -22,14 +23,54 @@ public class WebRequestHandler : MonoBehaviour
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
             if (webRequest.isNetworkError)
             {
-                Debug.Log(": Error: " + webRequest.error);
+                Debug.Log("Web Error: " + webRequest.error);
             }
             else
             {
-                Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
+                Debug.Log(pages[page] + ":Received: " + webRequest.downloadHandler.text);
             }
         }
+
+        WWW www = new WWW("http://dummy.restapiexample.com/api/v1/employees");
+        yield return www;
+        if (www.error != null)
+        {
+            print("WWW Error: " + www.error);
+            yield break;
+        }
+        string json = www.text;
+
+        List<employee> list = new List<employee>();
+        JsonData jsonData = JsonMapper.ToObject(json);
+        for (int i = 0; i < jsonData.Count; i++)
+        {
+            employee employe = JsonMapper.ToObject<employee>(jsonData[i].ToJson());
+            list.Add(employe);
+        }
+        foreach (employee employe in list)
+        {
+            Debug.Log(employe.id + " " + employe.employee_name);
+        }
     }
+
+    [System.Serializable]
+    public class employee
+    {
+        public string id;
+        public string employee_name;
+        public string emloyee_salary;
+        public string employee_age;
+        public string profile_image;
+
+        /*public static PatientInfo CreateFromJSON(string jsonString)
+        {
+            return JsonUtility.FromJson<PatientInfo>(jsonString);
+        }*/
+    }
+
 }
