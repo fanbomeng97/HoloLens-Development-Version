@@ -14,6 +14,7 @@ public class GeneratePatientList : MonoBehaviour
     [System.Serializable]
     public class PatientInfo
     {
+        public string id;
         public string name;
         public string dateOfBirth;
         public string gender;
@@ -44,7 +45,8 @@ public class GeneratePatientList : MonoBehaviour
         {
             GameObject button = Instantiate(buttonTemplates) as GameObject;
             button.SetActive(true);
-
+            
+            button.GetComponent<PatientListComponent>().SetID(patient.id);
             button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name + "\nGender: " + patient.gender);
 
             button.transform.SetParent(buttonTemplates.transform.parent, false);

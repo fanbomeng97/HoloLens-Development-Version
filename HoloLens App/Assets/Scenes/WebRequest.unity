@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc6dde9005877043b35128e27cd3dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseUri: https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb
 --- !u!1 &1535191329
 GameObject:
   m_ObjectHideFlags: 0
