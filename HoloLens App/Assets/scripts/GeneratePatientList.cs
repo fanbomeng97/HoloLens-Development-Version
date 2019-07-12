@@ -13,19 +13,7 @@ public class GeneratePatientList : MonoBehaviour
     private List<PatientInfo> patientList = new List<PatientInfo>();
     private List<employee> employeeList = new List<employee>();
 
-    [System.Serializable]
-    public class PatientInfo
-    {
-        public string id;
-        public string name;
-        public string dateOfBirth;
-        public string gender;
-
-        /*public static PatientInfo CreateFromJSON(string jsonString)
-        {
-            return JsonUtility.FromJson<PatientInfo>(jsonString);
-        }*/
-    }
+    
 
     IEnumerator GetRequest(string uri)
     {
@@ -67,9 +55,9 @@ public class GeneratePatientList : MonoBehaviour
         }
     }
 
-    /*public void ReadJsonFile()
+    public void ReadJsonFile()
     {
-        StreamReader reader = new StreamReader("./Assets/Sample/samplePatients.json");
+        StreamReader reader = new StreamReader("./Assets/Sample/Patients.json");
         string json = reader.ReadToEnd();
 
         JsonData jsonData = JsonMapper.ToObject(json);
@@ -78,22 +66,21 @@ public class GeneratePatientList : MonoBehaviour
             PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
             patientList.Add(patient);
         }
-    }*/
+        foreach (PatientInfo patient in patientList)
+        {
+            GameObject button = Instantiate(buttonTemplates) as GameObject;
+            button.SetActive(true);
+
+            button.GetComponent<PatientListComponent>().SetID(patient.id);
+            button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.first + " " + patient.name.last + "\nGender: " + patient.gender);
+
+            button.transform.SetParent(buttonTemplates.transform.parent, false);
+        }
+    }
 
     void Start()
     {
-        //ReadJsonFile();
-        StartCoroutine(GetRequest("http://dummy.restapiexample.com/api/v1/employees"));
-        Debug.Log("Test here");    
-    }
-
-    [System.Serializable]
-    public class employee
-    {
-        public string id;
-        public string employee_name;
-        public string emloyee_salary;
-        public string employee_age;
-        public string profile_image;
+        ReadJsonFile();
+        //StartCoroutine(GetRequest("http://dummy.restapiexample.com/api/v1/employees"));   
     }
 }
