@@ -5,13 +5,14 @@ using UnityEngine.Networking;
 
 public class WebRequestHandler : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("This can be a local or external resource uri.")]
+    private string baseUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
+
     void Start()
     {
         // A correct website page.
-        StartCoroutine(GetRequest("https://www.example.com"));
-
-        // A non-existing page.
-        StartCoroutine(GetRequest("https://error.html"));
+        StartCoroutine(GetRequest(baseUri));
     }
 
     IEnumerator GetRequest(string uri)
@@ -21,16 +22,13 @@ public class WebRequestHandler : MonoBehaviour
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
             if (webRequest.isNetworkError)
             {
-                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+                Debug.Log(": Error: " + webRequest.error);
             }
             else
             {
-                Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
             }
         }
     }
