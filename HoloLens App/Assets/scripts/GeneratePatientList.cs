@@ -57,7 +57,7 @@ public class GeneratePatientList : MonoBehaviour
 
     public void ReadJsonFile()
     {
-        StreamReader reader = new StreamReader("./Assets/Sample/Patients.json");
+        StreamReader reader = new StreamReader("./Assets/Sample/samplePatients.json");
         string json = reader.ReadToEnd();
 
         JsonData jsonData = JsonMapper.ToObject(json);
@@ -72,7 +72,7 @@ public class GeneratePatientList : MonoBehaviour
             button.SetActive(true);
 
             button.GetComponent<PatientListComponent>().SetID(patient.id);
-            button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.first + " " + patient.name.last + "\nGender: " + patient.gender);
+            button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.first + " " + patient.name.last + "\nGender: " + patient.gender + "\nDate of birth: " + patient.dateOfBirth.Substring(0,10));
 
             button.transform.SetParent(buttonTemplates.transform.parent, false);
         }
