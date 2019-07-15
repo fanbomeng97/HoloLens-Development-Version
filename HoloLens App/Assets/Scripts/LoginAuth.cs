@@ -1,18 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LoginAuth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private TMP_InputField PIN;
+    [SerializeField]
+    private TextMeshProUGUI WarningInfo;
+    [SerializeField]
+    private GameObject PINPad;
+
+    private void Start()
     {
-        
+        TMP_InputField PIN = GetComponent<TMP_InputField>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Auth()
     {
-        
+        if (PIN.text == "1234")
+        {
+            SceneManager.LoadScene(1, LoadSceneMode.Additive);
+            ScenesManager.RemoveComponent(PINPad);
+        }
+        else
+        {
+            WarningInfo.text = "The PIN is wrong!";
+            PIN.Select();
+            PIN.text = "";
+        }
+    }
+
+    public void Clear()
+    {
+        WarningInfo.text = "";
+        PIN.Select();
+        PIN.text = "";  
     }
 }
