@@ -23,8 +23,8 @@ public class LoginAuth : MonoBehaviour
     {
         if (PIN.text == "3825")
         {
+            Destroy(PINPad);
             SceneManager.LoadScene(1, LoadSceneMode.Additive);
-            ScenesManager.RemoveComponent(PINPad);
         }
         else
         {
