@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Data">
+      <UniqueIdentifier>{110cac68-d335-4d71-a724-41935be40b89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono">
+      <UniqueIdentifier>{4557d8ab-5778-44b9-9a1f-54edec188ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\2.0">
+      <UniqueIdentifier>{a61303f7-7910-4c07-a30f-47c4b0072e23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\2.0\Browsers">
+      <UniqueIdentifier>{bbc5bf74-2c95-42f7-80ce-56aeeb04b54a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\4.0">
+      <UniqueIdentifier>{75622f3e-10ae-497c-81c0-14cec427fd76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\4.0\Browsers">
+      <UniqueIdentifier>{c00fb316-a117-42e2-a196-671e4456db3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\4.5">
+      <UniqueIdentifier>{632e6d46-2bbc-4180-929f-dbe8c9dcbfc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\4.5\Browsers">
+      <UniqueIdentifier>{0b487e29-5c16-4234-bc02-59e58c953bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc\mono\mconfig">
+      <UniqueIdentifier>{14cd4a48-bf80-4419-bf45-d107779603a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\Metadata">
+      <UniqueIdentifier>{2204ace0-169f-4c47-9522-5c8dd1f2b6d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\Resources">
+      <UniqueIdentifier>{3118628e-9a5d-42af-a59f-e1fe1093fa45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Resources">
+      <UniqueIdentifier>{8aab5e8d-65ae-45aa-a587-51b2920c9a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels\BoomBox">
+      <UniqueIdentifier>{4b09596e-8b7b-4e4a-8ef8-f8e21b58b05e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels\BoomBox\glTF">
+      <UniqueIdentifier>{4c20cf90-d810-4aa7-9748-d54347cec5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels\BoomBox\glTF-Binary">
+      <UniqueIdentifier>{9c82c3e2-a40e-4043-905b-1e08fc809b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels\Lantern">
+      <UniqueIdentifier>{73e3423b-8fb6-4dbc-add0-8bb39ef09a0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels\Lantern\glTF">
+      <UniqueIdentifier>{8dbcc432-0bb0-4b59-bf62-319e3e2d27da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels\Lantern\glTF-Binary">
+      <UniqueIdentifier>{96e3a2a5-01b7-4f3f-94be-03fe868f4947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data\etc">
+      <UniqueIdentifier>{e212468e-0692-4406-83de-d31ece04a7ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\il2cpp_data">
+      <UniqueIdentifier>{5013bf66-73f4-40b9-af01-dd0639b85def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets\GltfModels">
+      <UniqueIdentifier>{ece1eec8-dcfc-4f55-b2c0-1fcaa3037329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\StreamingAssets">
+      <UniqueIdentifier>{654c6d95-2e54-4090-a2d2-5df4d2aef751}</UniqueIdentifier>
+    </Filter>
+    <None Include="$(MSBuildThisFileDirectory)HolographicAppRemoting.dll" />
+    <None Include="$(MSBuildThisFileDirectory)PerceptionDevice.dll" />
+    <Resource Include="$(MSBuildThisFileDirectory)Resource.res" />
+    <None Include="$(MSBuildThisFileDirectory)StoreManifest.xml" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UnityGenerated.cpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UnityGenerated.h" />
+    <None Include="$(MSBuildThisFileDirectory)UnityRemotingWMR.dll" />
+    <None Include="$(MSBuildThisFileDirectory)Data\boot.config">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\globalgamemanagers">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\globalgamemanagers.assets">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\level0">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\level0.resS">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\nativePlugins.txt">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\resources.assets">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\resources.assets.resS">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\sharedassets0.assets">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\sharedassets0.assets.resS">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\browscap.ini">
+      <Filter>Data\il2cpp_data\etc\mono</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\config">
+      <Filter>Data\il2cpp_data\etc\mono</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx">
+      <Filter>Data\il2cpp_data\etc\mono\2.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\2.0\machine.config">
+      <Filter>Data\il2cpp_data\etc\mono\2.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\2.0\settings.map">
+      <Filter>Data\il2cpp_data\etc\mono\2.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\2.0\web.config">
+      <Filter>Data\il2cpp_data\etc\mono\2.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\2.0\Browsers\Compat.browser">
+      <Filter>Data\il2cpp_data\etc\mono\2.0\Browsers</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx">
+      <Filter>Data\il2cpp_data\etc\mono\4.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.0\machine.config">
+      <Filter>Data\il2cpp_data\etc\mono\4.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.0\settings.map">
+      <Filter>Data\il2cpp_data\etc\mono\4.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.0\web.config">
+      <Filter>Data\il2cpp_data\etc\mono\4.0</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.0\Browsers\Compat.browser">
+      <Filter>Data\il2cpp_data\etc\mono\4.0\Browsers</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx">
+      <Filter>Data\il2cpp_data\etc\mono\4.5</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.5\machine.config">
+      <Filter>Data\il2cpp_data\etc\mono\4.5</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.5\settings.map">
+      <Filter>Data\il2cpp_data\etc\mono\4.5</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.5\web.config">
+      <Filter>Data\il2cpp_data\etc\mono\4.5</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\4.5\Browsers\Compat.browser">
+      <Filter>Data\il2cpp_data\etc\mono\4.5\Browsers</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\etc\mono\mconfig\config.xml">
+      <Filter>Data\il2cpp_data\etc\mono\mconfig</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\Metadata\global-metadata.dat">
+      <Filter>Data\il2cpp_data\Metadata</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\Resources\I18N.CJK.dll-resources.dat">
+      <Filter>Data\il2cpp_data\Resources</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\il2cpp_data\Resources\mscorlib.dll-resources.dat">
+      <Filter>Data\il2cpp_data\Resources</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\Resources\unity default resources">
+      <Filter>Data\Resources</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\Resources\unity_builtin_extra">
+      <Filter>Data\Resources</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\README.md">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox.bin">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox.gltf">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox_baseColor.png">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox_emissive.png">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox_Mat.mat">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox_normal.png">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF\BoomBox_occlusionRoughnessMetallic.png">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\BoomBox\glTF-Binary\BoomBox.glb">
+      <Filter>Data\StreamingAssets\GltfModels\BoomBox\glTF-Binary</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\README.md">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\Lantern.bin">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\Lantern.gltf">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\LanternPost_Mat.mat">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\Lantern_baseColor.png">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\Lantern_emissive.png">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\Lantern_normal.png">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF\Lantern_roughnessMetallic.png">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Data\StreamingAssets\GltfModels\Lantern\glTF-Binary\Lantern.glb">
+      <Filter>Data\StreamingAssets\GltfModels\Lantern\glTF-Binary</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)AudioPluginMsHRTF.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(OutDir)GameAssembly.dll" />
+    <None Include="$(OutDir)GameAssembly.pdb" />
+  </ItemGroup>
+</Project>
