@@ -21,7 +21,7 @@ public class LoginAuth : MonoBehaviour
 
     public void Auth()
     {
-        if (PIN.text == "1234")
+        if (PIN.text == "3825")
         {
             SceneManager.LoadScene(1, LoadSceneMode.Additive);
             ScenesManager.RemoveComponent(PINPad);
