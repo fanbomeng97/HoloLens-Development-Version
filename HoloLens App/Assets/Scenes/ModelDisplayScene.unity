@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadSceneIndex: 1
-  UnloadedSceneIndex: 2
+  UnloadedSceneIndex: 3
 --- !u!4 &319968459
 Transform:
   m_ObjectHideFlags: 0

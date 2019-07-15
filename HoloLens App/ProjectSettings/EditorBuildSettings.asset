@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: f332d6f10d52a8e4f892b917765d0c7c
   - enabled: 1
+    path: Assets/Scenes/HologramList.unity
+    guid: 39c65367a7836344a88f401353425441
+  - enabled: 1
     path: Assets/Scenes/ModelDisplayScene.unity
     guid: 5875b3401f63e4a4cb6b25396978c965
   m_configObjects: {}
