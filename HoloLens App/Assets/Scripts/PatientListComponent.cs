@@ -7,18 +7,18 @@ using TMPro;
 public class PatientListComponent : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI listText;
+    private TextMeshProUGUI Patientinfo;
     [SerializeField]
     private Text PatientID;
 
     private void Start()
     {
-        listText = GetComponent<TextMeshProUGUI>();
+        Patientinfo = GetComponent<TextMeshProUGUI>();
     }
 
-    public void SetText(string info)
+    public void SetText(string Patientinformation)
     {
-        listText.text = info;
+        Patientinfo.text = Patientinformation;
     }
     public void SetID(string id)
     {

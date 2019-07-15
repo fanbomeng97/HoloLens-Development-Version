@@ -1094,6 +1094,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5cdd4983b3af34d9b4133eedc36d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadSceneIndex: 1
+  UnloadedSceneIndex: 0
 --- !u!1 &1304835957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,8 +1441,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2044981583}
-        m_MethodName: StartApp
-        m_Mode: 5
+        m_MethodName: LoadScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1938,6 +1940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5cdd4983b3af34d9b4133eedc36d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadSceneIndex: 1
+  UnloadedSceneIndex: 0
 --- !u!1001 &2535423023240747965
 PrefabInstance:
   m_ObjectHideFlags: 0
