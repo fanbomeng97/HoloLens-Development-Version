@@ -12,7 +12,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
     {
         [SerializeField]
         [Tooltip("This can be a local or external resource uri.")]
-        private string uri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
+        private string uri = "https://dl.dropboxusercontent.com/s/uqfzst339hsyosf/500_abdomen_190mb.glb";
         [SerializeField, TooltipAttribute("Enter the build index of scene that you want to load the 3D model")]
         private int SceneIndex = 2;
 
@@ -41,9 +41,9 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
             try
             {
                GameObject loadedObject = await gltfObject.ConstructAsync();
-               loadedObject.transform.position = new Vector3(0.0f, 0.0f, 2.0f);
-               loadedObject.transform.localScale = new Vector3(0.25F, 0.25F, 0.25F);
-               loadedObject.transform.eulerAngles = new Vector3(0, 180, 0);
+               loadedObject.transform.position = new Vector3(0.19f, -0.25f, 1.65f);
+               loadedObject.transform.localScale = new Vector3(0.001F, 0.001F, 0.001F);
+               loadedObject.transform.eulerAngles = new Vector3(0, 0, 0);
                loadedObject.AddComponent<BoundingBox>();
                loadedObject.AddComponent<ManipulationHandler>();
                SceneManager.MoveGameObjectToScene(loadedObject, ModelDisplayScene);

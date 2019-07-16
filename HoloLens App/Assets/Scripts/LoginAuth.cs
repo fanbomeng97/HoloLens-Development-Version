@@ -24,6 +24,7 @@ public class LoginAuth : MonoBehaviour
         {
             Destroy(PINPad);
             SceneManager.LoadScene(1, LoadSceneMode.Additive);
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
         }
         else
         {
