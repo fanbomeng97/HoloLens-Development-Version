@@ -40,13 +40,18 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
 
             try
             {
-               GameObject loadedObject = await gltfObject.ConstructAsync();
-               loadedObject.transform.position = new Vector3(0.19f, -0.25f, 1.65f);
-               loadedObject.transform.localScale = new Vector3(0.001F, 0.001F, 0.001F);
-               loadedObject.transform.eulerAngles = new Vector3(0, 0, 0);
-               loadedObject.AddComponent<BoundingBox>();
-               loadedObject.AddComponent<ManipulationHandler>();
-               SceneManager.MoveGameObjectToScene(loadedObject, ModelDisplayScene);
+                GameObject loadedObject = await gltfObject.ConstructAsync();
+                loadedObject.transform.position = new Vector3(0.19f, -0.25f, 1.65f);
+                loadedObject.transform.localScale = new Vector3(0.001F, 0.001F, 0.001F);
+                loadedObject.transform.eulerAngles = new Vector3(0, 0, 0);
+                loadedObject.AddComponent<BoundingBox>();
+                loadedObject.AddComponent<ManipulationHandler>();
+                Mesh mesh = loadedObject.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
+                float moveAreaX = mesh.bounds.size.x;
+                float moveAreaY = mesh.bounds.size.y;
+                float moveAreaZ = mesh.bounds.size.z;
+                Debug.Log(moveAreaX + " " + moveAreaY + " " + moveAreaZ);
+                SceneManager.MoveGameObjectToScene(loadedObject, ModelDisplayScene);             
             }
             catch (Exception e)
             {
