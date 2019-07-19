@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 [CustomEditor(typeof(ConnectorQuery))]
+
 public class QueryInspectorGUI : Editor
 {
     /*private SerializedObject test;

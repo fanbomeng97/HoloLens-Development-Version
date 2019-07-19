@@ -61,7 +61,6 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
             Mesh mesh = gameobject.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
             float Max = Math.Max(Math.Max(mesh.bounds.size.x, mesh.bounds.size.y), mesh.bounds.size.z);
             float ScaleSize = 0.5f / Max;
-            Debug.Log(mesh.bounds.center.x + " "+ mesh.bounds.center.y + " " + mesh.bounds.center.z);
             gameobject.transform.localScale = new Vector3(ScaleSize, ScaleSize, ScaleSize);
             gameobject.transform.position = new Vector3(mesh.bounds.center.x * ScaleSize, -mesh.bounds.center.y * ScaleSize, mesh.bounds.center.z * ScaleSize + 2);
             gameobject.transform.eulerAngles = new Vector3(0, 180, 0);

@@ -20,7 +20,7 @@ public class HoloGramsList : MonoBehaviour
 
             button.GetComponent<HoloGramsListComponent>().SetID(hologram.hid);
             button.GetComponent<HoloGramsListComponent>().SetText("Hologram name: " + hologram.subject.name.full + "\nTitle: " + hologram.title + "\nDate of Creation: " + hologram.createdDate.Substring(0, 10));
-
+            //
             button.transform.SetParent(buttonTemplates.transform.parent, false);
         }
     }

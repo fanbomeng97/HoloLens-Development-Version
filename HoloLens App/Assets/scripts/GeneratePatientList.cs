@@ -60,9 +60,11 @@ public class GeneratePatientList : MonoBehaviour
         StreamReader reader = new StreamReader("./Assets/Sample/samplePatientsWithHolograms.json");
         string json = reader.ReadToEnd();
 
+        patientList.Clear();
         JsonData jsonData = JsonMapper.ToObject(json);
         for (int i = 0; i < jsonData.Count; i++)
         {
+            //PatientInfo patient = new PatientInfo { pid = "123", name = new PersonName { title = "Mr", full = "Alice White", first = "Alice", last = "White" }, gender = "female", birthDate ="1970-01-01", holograms = new HoloGrams[1] { new HoloGrams {hid = "1234", title="Lung", createdDate = "2019-07-19" } } };
             PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
             patientList.Add(patient);
         }

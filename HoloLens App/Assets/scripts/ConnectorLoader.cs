@@ -9,7 +9,7 @@ using System;
 
 public class ConnectorLoader : MonoBehaviour
 {
-    public enum ManipulationType
+    public enum ManipulationTypes
     {
         Scale,
         Rotate,
@@ -24,7 +24,7 @@ public class ConnectorLoader : MonoBehaviour
     public Vector3 ModelRotation;
     public Vector3 ModelScale;
     public bool Manipulable = true;
-    public ManipulationType TwoHandsManipulationType;
+    public ManipulationTypes ManipulationType;
     private string uri = "https://dl.dropboxusercontent.com/s/uqfzst339hsyosf/500_abdomen_190mb.glb";
 
     public async void Start()
@@ -72,7 +72,6 @@ public class ConnectorLoader : MonoBehaviour
         Mesh mesh = gameobject.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
         float Max = Math.Max(Math.Max(mesh.bounds.size.x, mesh.bounds.size.y), mesh.bounds.size.z);
         float ScaleSize = 0.5f / Max;
-        Debug.Log(mesh.bounds.center.x + " " + mesh.bounds.center.y + " " + mesh.bounds.center.z);
         gameobject.transform.localScale = new Vector3(ScaleSize, ScaleSize, ScaleSize);
         gameobject.transform.position = new Vector3(mesh.bounds.center.x * ScaleSize, -mesh.bounds.center.y * ScaleSize, mesh.bounds.center.z * ScaleSize + 2);
         gameobject.transform.eulerAngles = new Vector3(0, 180, 0);

@@ -531,7 +531,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1281019454}
+        m_MethodName: OpenSystemKeyboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: TMPro.TMP_InputField+SelectionEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnDeselect:
@@ -1302,8 +1313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5cdd4983b3af34d9b4133eedc36d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadSceneIndex: 2
-  UnloadedSceneIndex: 0
 --- !u!114 &1281019454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2124,8 +2133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5cdd4983b3af34d9b4133eedc36d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadSceneIndex: 1
-  UnloadedSceneIndex: 0
 --- !u!1001 &2535423023240747965
 PrefabInstance:
   m_ObjectHideFlags: 0

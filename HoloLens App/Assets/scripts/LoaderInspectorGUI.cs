@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
 [CustomEditor(typeof(ConnectorLoader))]
+
 public class LoaderInspectortGUI : Editor
 {
     private SerializedObject test;
-    private SerializedProperty TargetScene, ModelName, ModelPosition, ModelRotation, ModelScale, Manipulable, ManipulationType;
+    private SerializedProperty TargetScene, ModelName, ModelPosition, ModelRotation, ModelScale, Manipulable, ManipulationTypes;
     void OnEnable()
     {
         test = new SerializedObject(target);
@@ -14,7 +15,7 @@ public class LoaderInspectortGUI : Editor
         ModelRotation = test.FindProperty("ModelRotation");
         ModelScale = test.FindProperty("ModelScale");
         Manipulable = test.FindProperty("Manipulable");
-        ManipulationType = test.FindProperty("TwoHandsManipulationType");
+        ManipulationTypes = test.FindProperty("ManipulationType");
     }
     public override void OnInspectorGUI()
     {
@@ -27,7 +28,7 @@ public class LoaderInspectortGUI : Editor
         EditorGUILayout.PropertyField(Manipulable);
         if (Manipulable.boolValue)
         {
-            EditorGUILayout.PropertyField(ManipulationType);
+            EditorGUILayout.PropertyField(ManipulationTypes);
         }
         test.ApplyModifiedProperties();
     }
