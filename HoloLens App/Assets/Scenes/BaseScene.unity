@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5cdd4983b3af34d9b4133eedc36d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadSceneIndex: 1
+  LoadSceneIndex: 2
   UnloadedSceneIndex: 0
 --- !u!114 &1281019454
 MonoBehaviour:
@@ -1508,6 +1508,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1281019454}
         m_MethodName: Auth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1281019453}
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

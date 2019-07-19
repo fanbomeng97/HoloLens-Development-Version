@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class LoginAuth : MonoBehaviour
 {
     [SerializeField]
-    private TMP_InputField PIN;
+    private TMP_InputField PIN = null;
     [SerializeField]
-    private TextMeshProUGUI WarningInfo;
+    private TextMeshProUGUI WarningInfo = null;
     [SerializeField]
-    private GameObject PINPad;
+    private GameObject PINPad = null;
 
     private void Start()
     {
@@ -25,6 +24,7 @@ public class LoginAuth : MonoBehaviour
         {
             Destroy(PINPad);
             SceneManager.LoadScene(1, LoadSceneMode.Additive);
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
         }
         else
         {

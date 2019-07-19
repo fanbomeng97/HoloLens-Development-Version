@@ -8,9 +8,9 @@ using UnityEngine.Networking;
 public class GeneratePatientList : MonoBehaviour
 {
     [SerializeField]
-    private GameObject buttonTemplates;
+    private GameObject buttonTemplates = null;
 
-    private List<PatientInfo> patientList = new List<PatientInfo>();
+    public static List<PatientInfo> patientList = new List<PatientInfo>();
     private List<employee> employeeList = new List<employee>();
 
     
@@ -57,7 +57,7 @@ public class GeneratePatientList : MonoBehaviour
 
     public void ReadJsonFile()
     {
-        StreamReader reader = new StreamReader("./Assets/Sample/samplePatients.json");
+        StreamReader reader = new StreamReader("./Assets/Sample/samplePatientsWithHolograms.json");
         string json = reader.ReadToEnd();
 
         JsonData jsonData = JsonMapper.ToObject(json);
