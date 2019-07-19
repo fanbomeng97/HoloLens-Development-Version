@@ -7,7 +7,7 @@ using TMPro;
 public class HoloGramsList : MonoBehaviour
 {
     [SerializeField]
-    private GameObject buttonTemplates;
+    private GameObject buttonTemplates = null;
 
     private List<HoloGrams> HologramsList = new List<HoloGrams>();
 

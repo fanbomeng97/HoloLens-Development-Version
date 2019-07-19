@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 public class PatientListComponent : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI Patientinfo;
+    private TextMeshProUGUI Patientinfo = null;
     [SerializeField]
-    private Text PatientID;
+    private Text PatientID = null;
     public static List<HoloGrams> HologramsList = new List<HoloGrams>();
 
     private void Start()

@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class LoginAuth : MonoBehaviour
 {
     [SerializeField]
-    private TMP_InputField PIN;
+    private TMP_InputField PIN = null;
     [SerializeField]
-    private TextMeshProUGUI WarningInfo;
+    private TextMeshProUGUI WarningInfo = null;
     [SerializeField]
-    private GameObject PINPad;
+    private GameObject PINPad = null;
 
     private void Start()
     {
