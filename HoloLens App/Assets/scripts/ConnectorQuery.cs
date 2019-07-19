@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ConnectorQuery : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ConnectorQuery : MonoBehaviour
     [System.Serializable]
     public class Patient
     {
-        public Text TargetTextField;
+        public TextMeshProUGUI TargetTextField;
         public bool id = true;
         public bool name = true;
         public bool birthDate = true;
@@ -24,7 +25,7 @@ public class ConnectorQuery : MonoBehaviour
     [System.Serializable]
     public class Hologram
     {
-        public Text TargetTextField;
+        public TextMeshProUGUI TargetTextField;
         public bool id = true;
         public bool title = true;
         public bool author = true;
