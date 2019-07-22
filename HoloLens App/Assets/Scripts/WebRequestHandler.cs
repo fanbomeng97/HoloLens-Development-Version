@@ -12,7 +12,6 @@ public class WebRequestHandler : MonoBehaviour
 
     void Start()
     {
-        // A correct website page.
         StartCoroutine(GetRequest(baseUri));
     }
 

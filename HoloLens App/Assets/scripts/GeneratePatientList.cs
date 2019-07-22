@@ -13,13 +13,10 @@ public class GeneratePatientList : MonoBehaviour
     public static List<PatientInfo> patientList = new List<PatientInfo>();
     private List<employee> employeeList = new List<employee>();
 
-    
-
     IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
-            // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             string[] pages = uri.Split('/');
@@ -47,7 +44,7 @@ public class GeneratePatientList : MonoBehaviour
                     button.SetActive(true);
 
                     button.GetComponent<PatientListComponent>().SetID(patient.pid);
-                    button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.first + " " + patient.name.last + "\nGender: " + patient.gender + "\nDate of birth: " + patient.birthDate.Substring(0, 10));
+                    button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.full + "\nGender: " + patient.gender + "\nDate of birth: " + patient.birthDate.Substring(0, 10));
 
                     button.transform.SetParent(buttonTemplates.transform.parent, false);
                 }
@@ -74,7 +71,7 @@ public class GeneratePatientList : MonoBehaviour
             button.SetActive(true);
 
             button.GetComponent<PatientListComponent>().SetID(patient.pid);
-            button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.first + " " + patient.name.last + "\nGender: " + patient.gender + "\nDate of birth: " + patient.birthDate.Substring(0,10));
+            button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.full + "\nGender: " + patient.gender + "\nDate of birth: " + patient.birthDate.Substring(0,10));
 
             button.transform.SetParent(buttonTemplates.transform.parent, false);
         }

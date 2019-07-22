@@ -1,0 +1,36 @@
+setting
+
+.net
+
+uwp
+
+version
+
+(in Unity) Edit > Project Settings > Player Settings > Capabilities
+
+- Internet client, 
+
+- Internet Client Server and 
+
+- Private Network Client Server 
+
+
+UI:PINpad, HologramList, Size/Location
+Script: Connector
+
+https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb
+https://dl.dropboxusercontent.com/s/uqfzst339hsyosf/500_abdomen_190mb.glb
+
+https://dl.dropboxusercontent.com/s/bqmqyc2r5ldyy1i/Duck.glb
+
+https://dl.dropboxusercontent.com/s/mazz1br428bos3z/WaterBottle.glb
+
+
+with prefabs
+????list ????
+loader
+
+
+not with prefabs??json??
+loader ??url
+????id ??????ID
