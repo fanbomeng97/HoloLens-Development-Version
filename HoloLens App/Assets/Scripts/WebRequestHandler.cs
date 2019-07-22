@@ -8,7 +8,7 @@ public class WebRequestHandler : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("This can be a local or external resource uri.")]
-    private string baseUri = "http://dummy.restapiexample.com/api/v1/employees";
+    private string baseUri = "http://localhost:3001/api/v1/patients";
 
     void Start()
     {
@@ -35,42 +35,5 @@ public class WebRequestHandler : MonoBehaviour
                 Debug.Log(pages[page] + ":Received: " + webRequest.downloadHandler.text);
             }
         }
-
-        WWW www = new WWW("http://dummy.restapiexample.com/api/v1/employees");
-        yield return www;
-        if (www.error != null)
-        {
-            print("WWW Error: " + www.error);
-            yield break;
-        }
-        string json = www.text;
-
-        List<employee> list = new List<employee>();
-        JsonData jsonData = JsonMapper.ToObject(json);
-        for (int i = 0; i < jsonData.Count; i++)
-        {
-            employee employe = JsonMapper.ToObject<employee>(jsonData[i].ToJson());
-            list.Add(employe);
-        }
-        foreach (employee employe in list)
-        {
-            Debug.Log(employe.id + " " + employe.employee_name);
-        }
     }
-
-    [System.Serializable]
-    public class employee
-    {
-        public string id;
-        public string employee_name;
-        public string emloyee_salary;
-        public string employee_age;
-        public string profile_image;
-
-        /*public static PatientInfo CreateFromJSON(string jsonString)
-        {
-            return JsonUtility.FromJson<PatientInfo>(jsonString);
-        }*/
-    }
-
 }
