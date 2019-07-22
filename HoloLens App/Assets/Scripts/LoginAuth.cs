@@ -12,16 +12,10 @@ public class LoginAuth : MonoBehaviour
     private TextMeshProUGUI WarningInfo = null;
     [SerializeField]
     private GameObject PINPad = null;
-    public TouchScreenKeyboard keyboard;
 
     private void Start()
     {
         TMP_InputField PIN = GetComponent<TMP_InputField>();
-    }
-
-    public void OpenSystemKeyboard()
-    {
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, false, false);
     }
 
     public void Auth()
