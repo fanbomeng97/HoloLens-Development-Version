@@ -49,11 +49,6 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
                 Debug.LogError($"{e.Message}\n{e.StackTrace}");
                 return;
             }
-
-            if (gltfObject != null)
-            {
-                Debug.Log("Import successful");
-            }
         }
 
         private void Initialize(GameObject gameobject)
