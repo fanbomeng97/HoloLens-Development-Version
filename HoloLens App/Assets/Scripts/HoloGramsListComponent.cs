@@ -10,6 +10,7 @@ public class HoloGramsListComponent : MonoBehaviour
     private TextMeshProUGUI HologramInfo = null;
     [SerializeField]
     private Text HologramID = null;
+    public static string HologramId;
 
     private void Start()
     {
@@ -23,5 +24,10 @@ public class HoloGramsListComponent : MonoBehaviour
     public void SetID(string id)
     {
         HologramID.text = id;
+    }
+
+    public void DisplayModel()
+    {
+
     }
 }

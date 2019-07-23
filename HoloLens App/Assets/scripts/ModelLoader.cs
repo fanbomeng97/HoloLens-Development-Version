@@ -20,7 +20,6 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
         {
             Scene ModelDisplayScene = SceneManager.GetSceneByBuildIndex(SceneIndex);
             Response response = new Response();
-
             try
             {
                 response = await Rest.GetAsync(uri);
