@@ -12,7 +12,7 @@ public class StorageConnectionServer : MonoBehaviour
 {
     private static string BaseUri = "http://localhost:3001/api/v1";
     private static string WebRequestReturnData = null;
-    private static List<PatientInfo> patientList = new List<PatientInfo>();
+    //private static List<employee> patientList = new List<employee>();
     private static PatientInfo patient = new PatientInfo();
 
     #region Sigleton
@@ -59,31 +59,32 @@ public class StorageConnectionServer : MonoBehaviour
         BaseUri = Uri;
     }
 
-    public static List<PatientInfo> GetAllPatient()
+    public static IEnumerator GetAllPatient(List<employee> patientList)
     {
-        string AllPatientUri = BaseUri + "/patients";
-        instance.StartCoroutine(instance.GetRequest(AllPatientUri, (result) => {
-            string json = result;
-            patientList.Clear();
-            JsonData jsonData = JsonMapper.ToObject(json);
-            for (int i = 0; i < jsonData.Count; i++)
-            {
-                PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
-                patientList.Add(patient);
-            }
-        }));
-        return patientList;
+        //string AllPatientUri = BaseUri + "/patients";
+        string AllPatientUri = "http://dummy.restapiexample.com/api/v1/employees";
+        yield return GetRequest(AllPatientUri);
+        patientList.Clear();
+        JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
+        for (int i = 0; i < jsonData.Count; i++)
+        {
+            employee patient = JsonMapper.ToObject<employee>(jsonData[i].ToJson());
+            patientList.Add(patient);
+        }      
     }
 
-    public static PatientInfo GetPatient(string patientID)
+    public static IEnumerator GetPatient(PatientInfo patient, string patientID)
     {
-        WebRequestReturnData = null;
         string GetPatientUri = BaseUri + "/patients/" + patientID;
-        instance.StartCoroutine(instance.GetRequest(GetPatientUri, (result) => {
-            WebRequestReturnData = result;
-            patient = JsonMapper.ToObject<PatientInfo>(result);
-        }));
-        return patient;
+        yield return GetRequest(GetPatientUri);
+        patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
+    }
+
+    public static IEnumerator GetHologram(HoloGrams hologram, string HolgramID)
+    {
+        string GetHologramUri = BaseUri + "/holograms/" + HolgramID;
+        yield return GetRequest(GetHologramUri);
+        hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
     }
 
     public static async void LoadHologram(string HologramID)
@@ -121,20 +122,19 @@ public class StorageConnectionServer : MonoBehaviour
         }    
     }
 
-    IEnumerator GetRequest(string uri, Action<string> result)
+    public static IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             yield return webRequest.SendWebRequest();
-
+            WebRequestReturnData = null;
             if (webRequest.isNetworkError)
             {
                 Debug.Log("Web Error: " + webRequest.error);
-                result("Web Error: " + webRequest.error);
             }
             else
             {
-                result?.Invoke(webRequest.downloadHandler.text);             
+                WebRequestReturnData = webRequest.downloadHandler.text;
             }
         }
     }
