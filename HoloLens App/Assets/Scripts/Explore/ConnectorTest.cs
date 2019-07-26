@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloRepository;
 
 public class ConnectorTest : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {        
-        StartCoroutine(getpatient());        
+        StartCoroutine(GetPatient());        
     }
 
-    IEnumerator getpatient()
+    IEnumerator GetPatient()
     {
         List<employee> patientList = new List<employee>();
         yield return StorageConnectionServer.GetAllPatient(patientList);

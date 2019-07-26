@@ -4,137 +4,137 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Serialization;
-using HoloRepository.ModelSetting;
 using System.Collections.Generic;
 using LitJson;
 
-public class StorageConnectionServer : MonoBehaviour
+namespace HoloRepository
 {
-    private static string BaseUri = "http://localhost:3001/api/v1";
-    private static string WebRequestReturnData = null;
-    //private static List<employee> patientList = new List<employee>();
-    private static PatientInfo patient = new PatientInfo();
-
-    #region Sigleton
-    private static StorageConnectionServer mInstance = null;
-    private static StorageConnectionServer instance
+    public class StorageConnectionServer : MonoBehaviour
     {
-        get
+        private static string BaseUri = "http://localhost:3001/api/v1";
+        private static string WebRequestReturnData = null;
+
+        #region Sigleton
+        private static StorageConnectionServer mInstance = null;
+        private static StorageConnectionServer instance
+        {
+            get
+            {
+                if (mInstance == null)
+                {
+                    mInstance = GameObject.FindObjectOfType(typeof(StorageConnectionServer)) as StorageConnectionServer;
+
+                    if (mInstance == null)
+                    {
+                        mInstance = new GameObject("StaticCoroutine").AddComponent<StorageConnectionServer>();
+                    }
+                }
+                return mInstance;
+            }
+        }
+        #endregion Sigleton
+
+        #region MonoBehaviour Method
+        void Awake()
         {
             if (mInstance == null)
             {
-                mInstance = GameObject.FindObjectOfType(typeof(StorageConnectionServer)) as StorageConnectionServer;
-
-                if (mInstance == null)
-                {
-                    mInstance = new GameObject("StaticCoroutine").AddComponent<StorageConnectionServer>();
-                }
+                mInstance = this as StorageConnectionServer;
             }
-            return mInstance;
         }
-    }
-    #endregion Sigleton
-
-    #region MonoBehaviour Method
-    void Awake()
-    {
-        if (mInstance == null)
+        void Die()
         {
-            mInstance = this as StorageConnectionServer;
+            mInstance = null;
+            Destroy(gameObject);
         }
-    }
-    void Die()
-    {
-        mInstance = null;
-        Destroy(gameObject);
-    }
-    void OnApplicationQuit()
-    {
-        mInstance = null;
-    }
-    #endregion MonoBehaviour Method
-
-    public static void SetBaseUri(string Uri)
-    {
-        BaseUri = Uri;
-    }
-
-    public static IEnumerator GetAllPatient(List<employee> patientList)
-    {
-        //string AllPatientUri = BaseUri + "/patients";
-        string AllPatientUri = "http://dummy.restapiexample.com/api/v1/employees";
-        yield return GetRequest(AllPatientUri);
-        patientList.Clear();
-        JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
-        for (int i = 0; i < jsonData.Count; i++)
+        void OnApplicationQuit()
         {
-            employee patient = JsonMapper.ToObject<employee>(jsonData[i].ToJson());
-            patientList.Add(patient);
-        }      
-    }
-
-    public static IEnumerator GetPatient(PatientInfo patient, string patientID)
-    {
-        string GetPatientUri = BaseUri + "/patients/" + patientID;
-        yield return GetRequest(GetPatientUri);
-        patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
-    }
-
-    public static IEnumerator GetHologram(HoloGrams hologram, string HolgramID)
-    {
-        string GetHologramUri = BaseUri + "/holograms/" + HolgramID;
-        yield return GetRequest(GetHologramUri);
-        hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
-    }
-
-    public static async void LoadHologram(string HologramID)
-    {
-        WebRequestReturnData = null;
-        string GetHologramUri = BaseUri + "/holograms/" + HologramID + "/download";
-
-        Response response = new Response();
-        try
-        {
-            response = await Rest.GetAsync(GetHologramUri);
+            mInstance = null;
         }
-        catch (Exception e)
+        #endregion MonoBehaviour Method
+
+        public static void SetBaseUri(string Uri)
         {
-            Debug.LogError(e.Message);
+            BaseUri = Uri;
         }
 
-        if (!response.Successful)
+        public static IEnumerator GetAllPatient(List<employee> patientList)
         {
-            Debug.LogError($"Failed to get glb model from {GetHologramUri}");
-            return;
+            //string AllPatientUri = BaseUri + "/patients";
+            string AllPatientUri = "http://dummy.restapiexample.com/api/v1/employees";
+            yield return GetRequest(AllPatientUri);
+            patientList.Clear();
+            JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
+            for (int i = 0; i < jsonData.Count; i++)
+            {
+                employee patient = JsonMapper.ToObject<employee>(jsonData[i].ToJson());
+                patientList.Add(patient);
+            }
         }
 
-        var gltfObject = GltfUtility.GetGltfObjectFromGlb(response.ResponseData);
-
-        try
+        public static IEnumerator GetPatient(PatientInfo patient, string patientID)
         {
-            GameObject loadedObject = await gltfObject.ConstructAsync();
-            ModelSetting.Initialize(loadedObject);
+            string GetPatientUri = BaseUri + "/patients/" + patientID;
+            yield return GetRequest(GetPatientUri);
+            patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
         }
-        catch (Exception e)
-        {
-            Debug.LogError($"{e.Message}\n{e.StackTrace}");
-            return;
-        }    
-    }
 
-    public static IEnumerator GetRequest(string uri)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        public static IEnumerator GetHologram(HoloGrams hologram, string HolgramID)
         {
-            yield return webRequest.SendWebRequest();
+            string GetHologramUri = BaseUri + "/holograms/" + HolgramID;
+            yield return GetRequest(GetHologramUri);
+            hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
+        }
+
+        public static async void LoadHologram(string HologramID)
+        {
             WebRequestReturnData = null;
-            if (webRequest.isNetworkError)
+            string GetHologramUri = BaseUri + "/holograms/" + HologramID + "/download";
+
+            Response response = new Response();
+            try
             {
-                Debug.Log("Web Error: " + webRequest.error);
+                response = await Rest.GetAsync(GetHologramUri);
             }
-            else
+            catch (Exception e)
             {
-                WebRequestReturnData = webRequest.downloadHandler.text;
+                Debug.LogError(e.Message);
+            }
+
+            if (!response.Successful)
+            {
+                Debug.LogError($"Failed to get glb model from {GetHologramUri}");
+                return;
+            }
+
+            var gltfObject = GltfUtility.GetGltfObjectFromGlb(response.ResponseData);
+
+            try
+            {
+                GameObject loadedObject = await gltfObject.ConstructAsync();
+                ModelSetting.Initialize(loadedObject);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{e.Message}\n{e.StackTrace}");
+                return;
+            }
+        }
+
+        public static IEnumerator GetRequest(string uri)
+        {
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+            {
+                yield return webRequest.SendWebRequest();
+                WebRequestReturnData = null;
+                if (webRequest.isNetworkError)
+                {
+                    Debug.Log("Web Error: " + webRequest.error);
+                }
+                else
+                {
+                    WebRequestReturnData = webRequest.downloadHandler.text;
+                }
             }
         }
     }

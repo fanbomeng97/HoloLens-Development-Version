@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-namespace HoloRepository.ModelSetting
+namespace HoloRepository
 {
     public class ModelSetting : MonoBehaviour
     {
