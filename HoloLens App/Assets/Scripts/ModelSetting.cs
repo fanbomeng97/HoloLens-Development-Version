@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 
@@ -12,6 +13,8 @@ namespace HoloRepository
         private static Vector3 ModelRotation = new Vector3(0f, 0f, 0f);
         private static float ModelSize = 1f;
         private static bool Manipulable = true;
+        private static string SceneName = null;
+
         #endregion Properties
 
         #region Set Method
@@ -39,6 +42,10 @@ namespace HoloRepository
         {
             Manipulable = manipulable;
         }
+        public static void SetSeceneIndex(string scenename)
+        {
+            SceneName = scenename;
+        }
         #endregion Set Method
 
         public static void Initialize(GameObject gameobject)
@@ -58,6 +65,19 @@ namespace HoloRepository
             {
                 gameobject.AddComponent<BoundingBox>();
                 gameobject.AddComponent<ManipulationHandler>();
+            }
+
+            if (SceneName != null)
+            {
+                try
+                {
+                    Scene ModelDisplayScene = SceneManager.GetSceneByName(SceneName);
+                    SceneManager.MoveGameObjectToScene(gameobject, ModelDisplayScene);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Failed to move the object: "+ e.Message);
+                }              
             }
         }
     }

@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
-[CustomEditor(typeof(ConnectorLoader))]
+//[CustomEditor(typeof(ConnectorLoader))]
 
-public class LoaderInspectortGUI : Editor
+public class LoaderInspectortGUI
+    //public class LoaderInspectortGUI : Editor
 {
-    private SerializedObject test;
+    /*private SerializedObject test;
     private SerializedProperty TargetScene, ModelName, ModelPosition, ModelRotation, ModelScale, Manipulable, ManipulationTypes;
     void OnEnable()
     {
@@ -31,5 +32,5 @@ public class LoaderInspectortGUI : Editor
             EditorGUILayout.PropertyField(ManipulationTypes);
         }
         test.ApplyModifiedProperties();
-    }
+    }*/
 }

@@ -40,9 +40,9 @@ namespace HoloRepository
                         PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
                         patientList.Add(patient);
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        Debug.Log("Falied to mapping the patient from web response");
+                        Debug.Log("Failed to get the patient: " + e.Message);
                     }                   
                 }
             }           
@@ -58,9 +58,9 @@ namespace HoloRepository
                 PatientInfo Patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
                 CopyProperties(Patient, patient);
             }
-            catch
+            catch (Exception e)
             {
-                Debug.Log("Falied to mapping the patient from web response");
+                Debug.Log("Failed to get the patient: " + e.Message);
             }                 
         }
 
@@ -74,9 +74,9 @@ namespace HoloRepository
                 HoloGrams Hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
                 CopyProperties(Hologram, hologram);
             }
-            catch
+            catch (Exception e)
             {
-                Debug.Log("Falied to mapping the hologram from web response");
+                Debug.Log("Failed to get the Hologram: " + e.Message);
             }           
         }
 

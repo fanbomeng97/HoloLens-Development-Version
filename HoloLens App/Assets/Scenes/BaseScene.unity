@@ -1179,11 +1179,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7659225409742294455, guid: 89a30c92991f9d545893d429b7b59774,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -82.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3177094483460949721, guid: 89a30c92991f9d545893d429b7b59774,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1248,6 +1243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: -13.040856
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659225409742294455, guid: 89a30c92991f9d545893d429b7b59774,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -82.8
       objectReference: {fileID: 0}
     - target: {fileID: 6731368559475150681, guid: 89a30c92991f9d545893d429b7b59774,
         type: 3}
@@ -2292,6 +2292,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5175622305280748789, guid: ddfa2935896f19a47b8762806667f7b9,
+        type: 3}
+      propertyPath: InputField
+      value: 
+      objectReference: {fileID: 836648685}
     - target: {fileID: 5175622305280748790, guid: ddfa2935896f19a47b8762806667f7b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2347,11 +2352,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5175622305280748789, guid: ddfa2935896f19a47b8762806667f7b9,
-        type: 3}
-      propertyPath: InputField
-      value: 
-      objectReference: {fileID: 836648685}
     - target: {fileID: 5175622305398359062, guid: ddfa2935896f19a47b8762806667f7b9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

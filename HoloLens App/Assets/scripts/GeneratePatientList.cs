@@ -54,7 +54,7 @@ public class GeneratePatientList : MonoBehaviour
         }
     }
 
-    public void ReadJsonFile()
+    /*public void ReadJsonFile()
     {
         StreamReader reader = new StreamReader("./Assets/Sample/samplePatientsWithHolograms.json");
         string json = reader.ReadToEnd();
@@ -76,7 +76,7 @@ public class GeneratePatientList : MonoBehaviour
 
             button.transform.SetParent(buttonTemplates.transform.parent, false);
         }
-    }
+    }*/
 
     void Start()
     {
