@@ -71,6 +71,7 @@ public class StorageConnectionServer : MonoBehaviour
                 PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
                 patientList.Add(patient);
             }
+            return patientList;
         }));
         return patientList;
     }
