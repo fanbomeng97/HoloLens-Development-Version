@@ -5,91 +5,86 @@ using UnityEngine.Networking;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Serialization;
 using System.Collections.Generic;
+using System.Reflection;
 using LitJson;
+
 
 namespace HoloRepository
 {
     public class StorageConnectionServer : MonoBehaviour
     {
+        #region Properties
         private static string BaseUri = "http://localhost:3001/api/v1";
         private static string WebRequestReturnData = null;
+        #endregion Properties
 
-        #region Sigleton
-        private static StorageConnectionServer mInstance = null;
-        private static StorageConnectionServer instance
-        {
-            get
-            {
-                if (mInstance == null)
-                {
-                    mInstance = GameObject.FindObjectOfType(typeof(StorageConnectionServer)) as StorageConnectionServer;
-
-                    if (mInstance == null)
-                    {
-                        mInstance = new GameObject("StaticCoroutine").AddComponent<StorageConnectionServer>();
-                    }
-                }
-                return mInstance;
-            }
-        }
-        #endregion Sigleton
-
-        #region MonoBehaviour Method
-        void Awake()
-        {
-            if (mInstance == null)
-            {
-                mInstance = this as StorageConnectionServer;
-            }
-        }
-        void Die()
-        {
-            mInstance = null;
-            Destroy(gameObject);
-        }
-        void OnApplicationQuit()
-        {
-            mInstance = null;
-        }
-        #endregion MonoBehaviour Method
-
+        #region Public Method
         public static void SetBaseUri(string Uri)
         {
             BaseUri = Uri;
         }
 
-        public static IEnumerator GetAllPatient(List<employee> patientList)
+        public static IEnumerator GetAllPatient(List<PatientInfo> patientList)
         {
-            //string AllPatientUri = BaseUri + "/patients";
-            string AllPatientUri = "http://dummy.restapiexample.com/api/v1/employees";
+            string AllPatientUri = BaseUri + "/patients";
             yield return GetRequest(AllPatientUri);
+
             patientList.Clear();
-            JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
-            for (int i = 0; i < jsonData.Count; i++)
+            if (WebRequestReturnData != null)
             {
-                employee patient = JsonMapper.ToObject<employee>(jsonData[i].ToJson());
-                patientList.Add(patient);
-            }
+                JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
+                for (int i = 0; i < jsonData.Count; i++)
+                {
+                    try
+                    {
+                        PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
+                        patientList.Add(patient);
+                    }
+                    catch
+                    {
+                        Debug.Log("Falied to mapping the patient from web response");
+                    }                   
+                }
+            }           
         }
 
         public static IEnumerator GetPatient(PatientInfo patient, string patientID)
         {
             string GetPatientUri = BaseUri + "/patients/" + patientID;
             yield return GetRequest(GetPatientUri);
-            patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
+
+            try
+            {
+                PatientInfo Patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
+                CopyProperties(Patient, patient);
+            }
+            catch
+            {
+                Debug.Log("Falied to mapping the patient from web response");
+            }                 
         }
 
         public static IEnumerator GetHologram(HoloGrams hologram, string HolgramID)
         {
             string GetHologramUri = BaseUri + "/holograms/" + HolgramID;
             yield return GetRequest(GetHologramUri);
-            hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
+
+            try
+            {
+                HoloGrams Hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
+                CopyProperties(Hologram, hologram);
+            }
+            catch
+            {
+                Debug.Log("Falied to mapping the hologram from web response");
+            }           
         }
 
         public static async void LoadHologram(string HologramID)
         {
             WebRequestReturnData = null;
-            string GetHologramUri = BaseUri + "/holograms/" + HologramID + "/download";
+            //string GetHologramUri = BaseUri + "/holograms/" + HologramID + "/download";
+            string GetHologramUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
 
             Response response = new Response();
             try
@@ -120,8 +115,10 @@ namespace HoloRepository
                 return;
             }
         }
+        #endregion Public Method
 
-        public static IEnumerator GetRequest(string uri)
+        #region Private Common Method
+        private static IEnumerator GetRequest(string uri)
         {
             using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
             {
@@ -137,5 +134,16 @@ namespace HoloRepository
                 }
             }
         }
+
+        private static void CopyProperties(object source, object destination)
+        {
+            PropertyInfo[] destinationProperties = destination.GetType().GetProperties();
+            foreach (PropertyInfo destinationPi in destinationProperties)
+            {
+                PropertyInfo sourcePi = source.GetType().GetProperty(destinationPi.Name);
+                destinationPi.SetValue(destination, sourcePi.GetValue(source, null), null);
+            }
+        }
+        #endregion Private Commom Method
     }
 }

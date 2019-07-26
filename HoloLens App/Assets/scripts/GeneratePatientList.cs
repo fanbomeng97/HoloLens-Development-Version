@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using LitJson;
 using UnityEngine.Networking;
+using HoloRepository;
 
 public class GeneratePatientList : MonoBehaviour
 {

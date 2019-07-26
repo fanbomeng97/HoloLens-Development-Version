@@ -1,61 +1,64 @@
-﻿public class PatientInfo
+﻿namespace HoloRepository
 {
-    public string pid;
-    public PersonName name;
-    public string gender;
-    public string email;
-    public string phone;
-    public string birthDate;
-    public string pictureUrl;
-    public Address address;
-    public string[] imagingStudySeries;
-    public HoloGrams[] holograms;
-}
+    public class PatientInfo
+    {
+        public string pid { get; set; }
+        public PersonName name { get; set; }
+        public string gender { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public string birthDate { get; set; }
+        public string pictureUrl { get; set; }
+        public Address address { get; set; }
+        public string[] imagingStudySeries { get; set; }
+        public HoloGrams[] holograms { get; set; }
+    }
 
-public class HoloGrams
-{
-    public string hid;
-    public string title;
-    public Subject subject;
-    public Author author;
-    public string createdDate;
-    public int fileSizeInkb;
-    public string imagingStudySeriesId;
-}
+    public class HoloGrams
+    {
+        public string hid { get; set; }
+        public string title { get; set; }
+        public Subject subject { get; set; }
+        public Author author { get; set; }
+        public string createdDate { get; set; }
+        public int fileSizeInkb { get; set; }
+        public string imagingStudySeriesId { get; set; }
+    }
 
-public class PersonName
-{
-    public string title;
-    public string full;
-    public string first;
-    public string last;
-}
+    public class PersonName
+    {
+        public string title { get; set; }
+        public string full { get; set; }
+        public string first { get; set; }
+        public string last { get; set; }
+    }
 
-public class Address
-{
-    public string street;
-    public string city;
-    public string state;
-    public int postcode;
-}
+    public class Address
+    {
+        public string street { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public int postcode { get; set; }
+    }
 
-public class Subject
-{
-    public string pid;
-    public PersonName name;
-}
+    public class Subject
+    {
+        public string pid { get; set; }
+        public PersonName name { get; set; }
+    }
 
-public class Author
-{
-    public string aid;
-    public PersonName name;
-}
+    public class Author
+    {
+        public string aid { get; set; }
+        public PersonName name { get; set; }
+    }
 
-public class employee
-{
-    public string id;
-    public string employee_name;
-    public string emloyee_salary;
-    public string employee_age;
-    public string profile_image;
+    public class employee
+    {
+        public string id;
+        public string employee_name;
+        public string emloyee_salary;
+        public string employee_age;
+        public string profile_image;
+    }
 }

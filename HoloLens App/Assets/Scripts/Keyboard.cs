@@ -27,4 +27,8 @@ public class Keyboard : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
 }
