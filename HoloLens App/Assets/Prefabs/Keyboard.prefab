@@ -1949,8 +1949,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5175622305280748789}
-        m_MethodName: One
-        m_Mode: 1
+        m_MethodName: Number
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4009,11 +4009,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175622305280748790}
     m_Modifications:
-    - target: {fileID: 6732749397114062615, guid: 89a30c92991f9d545893d429b7b59774,
-        type: 3}
-      propertyPath: m_Name
-      value: HoloCanvas
-      objectReference: {fileID: 0}
     - target: {fileID: 6805912543573210283, guid: 89a30c92991f9d545893d429b7b59774,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4128,6 +4123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.0028
+      objectReference: {fileID: 0}
+    - target: {fileID: 6732749397114062615, guid: 89a30c92991f9d545893d429b7b59774,
+        type: 3}
+      propertyPath: m_Name
+      value: HoloCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 6807180373711700659, guid: 89a30c92991f9d545893d429b7b59774,
         type: 3}

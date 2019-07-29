@@ -17,7 +17,7 @@ namespace HoloRepository
         public HoloGrams[] holograms { get; set; }
     }
 
-    /*public class Patient
+    /*public class PatientInfo
     {
         public string pid { get; set; }
         public string gender { get; set; }
@@ -67,7 +67,7 @@ namespace HoloRepository
         public string title { get; set; }
         public string full { get; set; }
         public string given { get; set; }
-        public string familly { get; set; }
+        public string family { get; set; }
     }*/
 
     [System.Serializable]

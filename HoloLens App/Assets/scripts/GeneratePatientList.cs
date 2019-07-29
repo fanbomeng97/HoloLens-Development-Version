@@ -29,7 +29,7 @@ public class GeneratePatientList : MonoBehaviour
             }
             else
             {
-                Debug.Log(pages[page] + ":Received: " + webRequest.downloadHandler.text);
+                //Debug.Log(pages[page] + ":Received: " + webRequest.downloadHandler.text);
                 string json = webRequest.downloadHandler.text;
 
                 patientList.Clear();

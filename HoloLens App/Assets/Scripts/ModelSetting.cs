@@ -42,7 +42,7 @@ namespace HoloRepository
         {
             Manipulable = manipulable;
         }
-        public static void SetSeceneIndex(string scenename)
+        public static void SetSeceneName(string scenename)
         {
             SceneName = scenename;
         }
@@ -50,6 +50,8 @@ namespace HoloRepository
 
         public static void Initialize(GameObject gameobject)
         {
+            gameobject.name = ModelName;
+
             Mesh mesh = gameobject.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
             float Max = Math.Max(Math.Max(mesh.bounds.size.x, mesh.bounds.size.y), mesh.bounds.size.z);
 

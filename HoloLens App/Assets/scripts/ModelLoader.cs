@@ -52,6 +52,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.Gltf
 
         private void Initialize(GameObject gameobject)
         {
+            gameobject.name = "Helmet";
             Mesh mesh = gameobject.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
             float Max = Math.Max(Math.Max(mesh.bounds.size.x, mesh.bounds.size.y), mesh.bounds.size.z);
             float ScaleSize = 0.5f / Max;

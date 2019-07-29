@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using HoloRepository;
 using TMPro;
 using System;
@@ -62,7 +61,7 @@ public class DemoScript : MonoBehaviour
     {
         ModelSetting.SetManipulable(true);
         ModelSetting.SetRotation(new Vector3(0, 180, 0));
-        ModelSetting.SetPostition(new Vector3(0.2f, -0.2f, 0.8f));
+        ModelSetting.SetPostition(new Vector3(0.22f, -0.2f, 0.8f));
         ModelSetting.SetSize(0.12f);
         StorageConnectionServer.LoadHologram("hololensid");
     }

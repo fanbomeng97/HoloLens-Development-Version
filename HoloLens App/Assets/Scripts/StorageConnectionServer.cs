@@ -44,20 +44,20 @@ namespace HoloRepository
                         patientList.Add(patient);
                     }                  
                 }
-               //JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
-                /*for (int i = 0; i < patient.Count; i++)
+                /*JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
+               for (int i = 0; i < patient.Count; i++)
                 {
                     try
                     {
-                        //PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
-                        //patientList.Add(patient);
+                        PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
+                        patientList.Add(patient);
                     }
                     catch (Exception e)
                     {
                         Debug.Log("Failed to get the patient: " + e.Message);
                     }                   
                 }*/
-            }           
+            }
         }
 
         public static IEnumerator GetPatient(PatientInfo patient, string patientID)
@@ -190,6 +190,20 @@ namespace HoloRepository
                     address.state = Json["address"]["state"].Value;
                     address.postcode = Json["address"]["postcode"].AsInt;
                     patient.address = address;
+
+                    /*
+                    patient.pid = Json["pid"].Value;
+                    patient.gender = Json["gender"].Value;
+                    patient.birthDate = Json["birthDate"].Value;
+
+                    PersonName name = new PersonName();
+                    name.title = Json["name"]["title"].Value;
+                    name.full = Json["name"]["full"].Value;
+                    name.given = Json["name"]["given"].Value;
+                    name.family = Json["name"]["family"].Value;
+                    patient.name = name;
+                     */
+
                 }
                 catch (Exception e)
                 {
@@ -234,6 +248,21 @@ namespace HoloRepository
                     hologram.createdDate = Json["createdDate"].Value;
                     hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
                     hologram.imagingStudySeriesId = Json["imagingStudySeriesId"].Value;
+
+                    /*                   
+                    hologram.hid = Json["hid"].Value;
+                    hologram.title = Json["title"].Value;
+                    hologram.description = Json["description"].Value;
+                    hologram.contentType = Json["contentType"].Value;
+                    hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
+                    hologram.bodySite = Json["bodySite"].Value;
+                    hologram.dateOfImaging = Json["dateOfImaging"].Value;
+                    hologram.creationDate = Json["creationDate"].Value;
+                    hologram.creationMode = Json["creationMode"].Value;
+                    hologram.creationDescription = Json["creationDescription"].Value;
+                    hologram.aid = Json["aid"].Value;
+                    hologram.pid = Json["pid"].Value;
+                     */
                 }
                 catch (Exception e)
                 {
