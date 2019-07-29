@@ -28,7 +28,6 @@ public class DemoScript : MonoBehaviour
     {
         List<PatientInfo> patientList = new List<PatientInfo>();
         yield return StorageConnectionServer.GetAllPatient(patientList);
-        //Do something here
         All.SetActive(true);
         foreach (PatientInfo patient in patientList)
         {
@@ -48,7 +47,6 @@ public class DemoScript : MonoBehaviour
     {
         PatientInfo patient = new PatientInfo();
         yield return StorageConnectionServer.GetPatient(patient, "5d1bf4f17322a9283482fe7e");
-        //Do something here
         Single.SetActive(true);
         try
         {
@@ -64,7 +62,7 @@ public class DemoScript : MonoBehaviour
     {
         ModelSetting.SetManipulable(true);
         ModelSetting.SetRotation(new Vector3(0, 180, 0));
-        ModelSetting.SetPostition(new Vector3(0.2f, -0.18f, 0.8f));
+        ModelSetting.SetPostition(new Vector3(0.2f, -0.2f, 0.8f));
         ModelSetting.SetSize(0.12f);
         StorageConnectionServer.LoadHologram("hololensid");
     }

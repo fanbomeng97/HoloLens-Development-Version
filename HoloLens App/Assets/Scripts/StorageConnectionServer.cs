@@ -7,6 +7,7 @@ using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Serialization;
 using System.Collections.Generic;
 using System.Reflection;
 using LitJson;
+using SimpleJSON;
 
 
 namespace HoloRepository
@@ -26,25 +27,36 @@ namespace HoloRepository
 
         public static IEnumerator GetAllPatient(List<PatientInfo> patientList)
         {
+            //string AllPatientUri = BaseUri + "/patients?=";
             string AllPatientUri = BaseUri + "/patients";
             yield return GetRequest(AllPatientUri);
 
             patientList.Clear();
             if (WebRequestReturnData != null)
             {
-                JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
-                for (int i = 0; i < jsonData.Count; i++)
+                JSONNode incomingData = JSON.Parse(WebRequestReturnData);
+                JSONArray JsonArray = incomingData.AsArray;
+                foreach (JSONNode PatientJson in JsonArray)
+                {
+                    PatientInfo patient = JsonToPatient(PatientJson);
+                    if (patient.pid != null)
+                    {
+                        patientList.Add(patient);
+                    }                  
+                }
+               //JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
+                /*for (int i = 0; i < patient.Count; i++)
                 {
                     try
                     {
-                        PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
-                        patientList.Add(patient);
+                        //PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
+                        //patientList.Add(patient);
                     }
                     catch (Exception e)
                     {
                         Debug.Log("Failed to get the patient: " + e.Message);
                     }                   
-                }
+                }*/
             }           
         }
 
@@ -52,32 +64,34 @@ namespace HoloRepository
         {
             string GetPatientUri = BaseUri + "/patients/" + patientID;
             yield return GetRequest(GetPatientUri);
-
             try
             {
-                PatientInfo Patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
+                JSONNode PatientJson = JSON.Parse(WebRequestReturnData);
+                PatientInfo Patient = JsonToPatient(PatientJson);
+                //PatientInfo Patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
                 CopyProperties(Patient, patient);
             }
             catch (Exception e)
             {
-                Debug.Log("Failed to map the patient: " + e.Message);
-            }                 
+                Debug.Log("Failed to get the patient: " + e.Message);
+            }                      
         }
 
         public static IEnumerator GetHologram(HoloGrams hologram, string HolgramID)
         {
             string GetHologramUri = BaseUri + "/holograms/" + HolgramID;
             yield return GetRequest(GetHologramUri);
-
             try
             {
-                HoloGrams Hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
+                JSONNode HologramJson = JSON.Parse(WebRequestReturnData);
+                HoloGrams Hologram = JsonToHologram(HologramJson);
+                //HoloGrams Hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
                 CopyProperties(Hologram, hologram);
             }
             catch (Exception e)
             {
-                Debug.Log("Failed to get the Hologram: " + e.Message);
-            }           
+                Debug.Log("Failed to get the patient: " + e.Message);
+            }               
         }
 
         public static async void LoadHologram(string HologramID)
@@ -143,6 +157,90 @@ namespace HoloRepository
                 PropertyInfo sourcePi = source.GetType().GetProperty(destinationPi.Name);
                 destinationPi.SetValue(destination, sourcePi.GetValue(source, null), null);
             }
+        }
+
+        private static PatientInfo JsonToPatient(JSONNode Json)
+        {
+            PatientInfo patient = new PatientInfo();
+            if (Json["pid"].Value == "")
+            {
+                Debug.Log("Non-Availiable patient!");
+            }else
+            {
+                try
+                {
+                    patient.pid = Json["pid"].Value;
+
+                    PersonName name = new PersonName();
+                    name.title = Json["name"]["title"].Value;
+                    name.full = Json["name"]["full"].Value;
+                    name.first = Json["name"]["first"].Value;
+                    name.last = Json["name"]["last"].Value;
+                    patient.name = name;
+
+                    patient.gender = Json["gender"].Value;
+                    patient.email = Json["email"].Value;
+                    patient.phone = Json["phone"].Value;
+                    patient.birthDate = Json["birthDate"].Value;
+                    patient.pictureUrl = Json["pictureUrl"].Value;
+
+                    Address address = new Address();
+                    address.street = Json["address"]["street"].Value;
+                    address.city = Json["address"]["city"].Value;
+                    address.state = Json["address"]["state"].Value;
+                    address.postcode = Json["address"]["postcode"].AsInt;
+                    patient.address = address;
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Patient mapping error: " + e);
+                }
+            }            
+            return patient;
+        }
+
+        private static HoloGrams JsonToHologram(JSONNode Json)
+        {
+            HoloGrams hologram = new HoloGrams();
+            if (Json["hid"].Value == "")
+            {
+                Debug.Log("Non-Availiable Hologram!");
+            }
+            else
+            {
+                try
+                {
+                    hologram.hid = Json["hid"].Value;
+                    hologram.title = Json["title"].Value;
+
+                    Subject subject = new Subject();
+                    subject.pid = Json["subject"]["pid"].Value;
+                    PersonName name = new PersonName();
+                    name.title = Json["subject"]["name"]["title"].Value;
+                    name.full = Json["subject"]["name"]["full"].Value;
+                    name.first = Json["subject"]["name"]["first"].Value;
+                    name.last = Json["subject"]["name"]["last"].Value;
+                    subject.name = name;
+
+                    Author author = new Author();
+                    author.aid = Json["author"]["aid"].Value;
+                    PersonName AuthorName = new PersonName();
+                    AuthorName.title = Json["author"]["name"]["title"].Value;
+                    AuthorName.full = Json["author"]["name"]["full"].Value;
+                    AuthorName.first = Json["author"]["name"]["first"].Value;
+                    AuthorName.last = Json["author"]["name"]["last"].Value;
+                    subject.name = AuthorName;
+
+                    hologram.createdDate = Json["createdDate"].Value;
+                    hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
+                    hologram.imagingStudySeriesId = Json["imagingStudySeriesId"].Value;
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Hologram mapping error: " + e);
+                }
+            }            
+            return hologram;
         }
         #endregion Private Commom Method
     }
