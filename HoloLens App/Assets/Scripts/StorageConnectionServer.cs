@@ -60,7 +60,7 @@ namespace HoloRepository
             }
             catch (Exception e)
             {
-                Debug.Log("Failed to get the patient: " + e.Message);
+                Debug.Log("Failed to map the patient: " + e.Message);
             }                 
         }
 

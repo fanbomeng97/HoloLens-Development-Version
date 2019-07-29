@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using HoloRepository;
 using TMPro;
+using System;
 
 public class DemoScript : MonoBehaviour
 {
@@ -33,9 +34,7 @@ public class DemoScript : MonoBehaviour
         {
             GameObject button = Instantiate(buttonTemplates) as GameObject;
             button.SetActive(true);
-            Debug.Log(patient.name.full);
-            //button.GetComponent<DemoScript>().SetText(patient.name.full);
-
+            button.GetComponent<DemoScript>().SetText(patient.name.full);
             button.transform.SetParent(buttonTemplates.transform.parent, false);
         }
     }
@@ -51,7 +50,14 @@ public class DemoScript : MonoBehaviour
         yield return StorageConnectionServer.GetPatient(patient, "5d1bf4f17322a9283482fe7e");
         //Do something here
         Single.SetActive(true);
-        SinglePatientInfo.text = "Patient name: \n" + patient.name.full + "\nGender: " + patient.gender + "\nDate of birth: \n" + patient.birthDate.Substring(0, 10);
+        try
+        {
+            SinglePatientInfo.text = string.Format("Patient name: \n{0}\nGender: {1}\nDate of Birth: \n{2}", patient.name.full, patient.gender, patient.birthDate.Substring(0, 10));
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Failed to set the text: " + e.Message);
+        }    
     }
 
     public void LoadModel()
