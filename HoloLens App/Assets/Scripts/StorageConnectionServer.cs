@@ -34,8 +34,8 @@ namespace HoloRepository
             patientList.Clear();
             if (WebRequestReturnData != null)
             {
-                JSONNode incomingData = JSON.Parse(WebRequestReturnData);
-                JSONArray JsonArray = incomingData.AsArray;
+                JSONNode InitialJsonData = JSON.Parse(WebRequestReturnData);
+                JSONArray JsonArray = InitialJsonData.AsArray;
                 foreach (JSONNode PatientJson in JsonArray)
                 {
                     PatientInfo patient = JsonToPatient(PatientJson);
