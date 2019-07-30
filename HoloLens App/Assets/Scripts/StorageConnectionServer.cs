@@ -6,7 +6,6 @@ using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Serialization;
 using System.Collections.Generic;
 using System.Reflection;
-using LitJson;
 using SimpleJSON;
 
 
@@ -42,21 +41,8 @@ namespace HoloRepository
                     if (patient.pid != null)
                     {
                         patientList.Add(patient);
-                    }                  
-                }
-                /*JsonData jsonData = JsonMapper.ToObject(WebRequestReturnData);
-               for (int i = 0; i < patient.Count; i++)
-                {
-                    try
-                    {
-                        PatientInfo patient = JsonMapper.ToObject<PatientInfo>(jsonData[i].ToJson());
-                        patientList.Add(patient);
                     }
-                    catch (Exception e)
-                    {
-                        Debug.Log("Failed to get the patient: " + e.Message);
-                    }                   
-                }*/
+                }
             }
         }
 
@@ -68,20 +54,19 @@ namespace HoloRepository
             {
                 JSONNode PatientJson = JSON.Parse(WebRequestReturnData);
                 PatientInfo Patient = JsonToPatient(PatientJson);
-                //PatientInfo Patient = JsonMapper.ToObject<PatientInfo>(WebRequestReturnData);
                 CopyProperties(Patient, patient);
             }
             catch (Exception e)
             {
-                Debug.Log("Failed to get the patient: " + e.Message);
+                Debug.Log("Failed to get the patient from server! \n[Error message]:" + e.Message);
             }                      
         }
 
         public static IEnumerator GetMultipleHologram(List<HoloGrams> hologramList, string IDs)
         {
             //string MultipleHolgramUri = BaseUri + "/holograms?=" + "IDs";
-            string MultipleHolgramUri = BaseUri + "/patients";
-            yield return GetRequest(MultipleHolgramUri);
+            string MultipleHologramUri = BaseUri + "/holograms";
+            yield return GetRequest(MultipleHologramUri);
 
             hologramList.Clear();
             if (WebRequestReturnData != null)
@@ -107,12 +92,11 @@ namespace HoloRepository
             {
                 JSONNode HologramJson = JSON.Parse(WebRequestReturnData);
                 HoloGrams Hologram = JsonToHologram(HologramJson);
-                //HoloGrams Hologram = JsonMapper.ToObject<HoloGrams>(WebRequestReturnData);
                 CopyProperties(Hologram, hologram);
             }
             catch (Exception e)
             {
-                Debug.Log("Failed to get the patient: " + e.Message);
+                Debug.Log("Failed to get the hologram from server! \n[Error message]: " + e.Message);
             }               
         }
 
@@ -120,7 +104,8 @@ namespace HoloRepository
         {
             WebRequestReturnData = null;
             //string GetHologramUri = BaseUri + "/holograms/" + HologramID + "/download";
-            string GetHologramUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
+            //string GetHologramUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
+            string GetHologramUri = "https://dl.dropboxusercontent.com/s/uqfzst339hsyosf/500_abdomen_190mb.glb";         
 
             Response response = new Response();
             try
@@ -162,7 +147,7 @@ namespace HoloRepository
                 WebRequestReturnData = null;
                 if (webRequest.isNetworkError)
                 {
-                    Debug.Log("Web Error: " + webRequest.error);
+                    Debug.Log("Web request Error! [Error message]: " + webRequest.error);
                 }
                 else
                 {
@@ -184,112 +169,116 @@ namespace HoloRepository
         private static PatientInfo JsonToPatient(JSONNode Json)
         {
             PatientInfo patient = new PatientInfo();
+
             if (Json["pid"].Value == "")
             {
-                Debug.Log("Non-Availiable patient!");
-            }else
+                Debug.Log("No response from server with this patient ID!");
+                return patient;
+            }
+
+            try
             {
-                try
-                {
-                    patient.pid = Json["pid"].Value;
+                patient.pid = Json["pid"].Value;
 
-                    PersonName name = new PersonName();
-                    name.title = Json["name"]["title"].Value;
-                    name.full = Json["name"]["full"].Value;
-                    name.first = Json["name"]["first"].Value;
-                    name.last = Json["name"]["last"].Value;
-                    patient.name = name;
+                PersonName name = new PersonName();
+                name.title = Json["name"]["title"].Value;
+                name.full = Json["name"]["full"].Value;
+                name.first = Json["name"]["first"].Value;
+                name.last = Json["name"]["last"].Value;
+                patient.name = name;
 
-                    patient.gender = Json["gender"].Value;
-                    patient.email = Json["email"].Value;
-                    patient.phone = Json["phone"].Value;
-                    patient.birthDate = Json["birthDate"].Value;
-                    patient.pictureUrl = Json["pictureUrl"].Value;
+                patient.gender = Json["gender"].Value;
+                patient.email = Json["email"].Value;
+                patient.phone = Json["phone"].Value;
+                patient.birthDate = Json["birthDate"].Value;
+                patient.pictureUrl = Json["pictureUrl"].Value;
 
-                    Address address = new Address();
-                    address.street = Json["address"]["street"].Value;
-                    address.city = Json["address"]["city"].Value;
-                    address.state = Json["address"]["state"].Value;
-                    address.postcode = Json["address"]["postcode"].AsInt;
-                    patient.address = address;
+                Address address = new Address();
+                address.street = Json["address"]["street"].Value;
+                address.city = Json["address"]["city"].Value;
+                address.state = Json["address"]["state"].Value;
+                address.postcode = Json["address"]["postcode"].AsInt;
+                patient.address = address;
 
-                    /*
-                    patient.pid = Json["pid"].Value;
-                    patient.gender = Json["gender"].Value;
-                    patient.birthDate = Json["birthDate"].Value;
+                /*
+                patient.pid = Json["pid"].Value;
+                patient.gender = Json["gender"].Value;
+                patient.birthDate = Json["birthDate"].Value;
 
-                    PersonName name = new PersonName();
-                    name.title = Json["name"]["title"].Value;
-                    name.full = Json["name"]["full"].Value;
-                    name.given = Json["name"]["given"].Value;
-                    name.family = Json["name"]["family"].Value;
-                    patient.name = name;
-                     */
+                PersonName name = new PersonName();
+                name.title = Json["name"]["title"].Value;
+                name.full = Json["name"]["full"].Value;
+                name.given = Json["name"]["given"].Value;
+                name.family = Json["name"]["family"].Value;
+                patient.name = name;
+                 */
 
-                }
-                catch (Exception e)
-                {
-                    Debug.Log("Patient mapping error: " + e);
-                }
-            }            
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Failed to map patient from response data! \n[Error message]: " + e);
+            }
+                    
             return patient;
         }
 
         private static HoloGrams JsonToHologram(JSONNode Json)
         {
             HoloGrams hologram = new HoloGrams();
-            if (Json["hid"].Value == "")
+
+            if (Json["bodySite"].Value == "")
             {
-                Debug.Log("Non-Availiable Hologram!");
+                Debug.Log("No response from server with this hologram ID!");
+                return hologram;
             }
-            else
+
+            try
             {
-                try
-                {
-                    hologram.hid = Json["hid"].Value;
-                    hologram.title = Json["title"].Value;
+                hologram.hid = Json["hid"].Value;
+                hologram.title = Json["title"].Value;
 
-                    Subject subject = new Subject();
-                    subject.pid = Json["subject"]["pid"].Value;
-                    PersonName name = new PersonName();
-                    name.title = Json["subject"]["name"]["title"].Value;
-                    name.full = Json["subject"]["name"]["full"].Value;
-                    name.first = Json["subject"]["name"]["first"].Value;
-                    name.last = Json["subject"]["name"]["last"].Value;
-                    subject.name = name;
+                Subject subject = new Subject();
+                subject.pid = Json["subject"]["pid"].Value;
+                PersonName name = new PersonName();
+                name.title = Json["subject"]["name"]["title"].Value;
+                name.full = Json["subject"]["name"]["full"].Value;
+                name.first = Json["subject"]["name"]["first"].Value;
+                name.last = Json["subject"]["name"]["last"].Value;
+                subject.name = name;
+                hologram.subject = subject;
 
-                    Author author = new Author();
-                    author.aid = Json["author"]["aid"].Value;
-                    PersonName AuthorName = new PersonName();
-                    AuthorName.title = Json["author"]["name"]["title"].Value;
-                    AuthorName.full = Json["author"]["name"]["full"].Value;
-                    AuthorName.first = Json["author"]["name"]["first"].Value;
-                    AuthorName.last = Json["author"]["name"]["last"].Value;
-                    subject.name = AuthorName;
+                Author author = new Author();
+                author.aid = Json["author"]["aid"].Value;
+                PersonName AuthorName = new PersonName();
+                AuthorName.title = Json["author"]["name"]["title"].Value;
+                AuthorName.full = Json["author"]["name"]["full"].Value;
+                AuthorName.first = Json["author"]["name"]["first"].Value;
+                AuthorName.last = Json["author"]["name"]["last"].Value;
+                author.name = AuthorName;
+                hologram.author = author;
 
-                    hologram.createdDate = Json["createdDate"].Value;
-                    hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
-                    hologram.imagingStudySeriesId = Json["imagingStudySeriesId"].Value;
+                hologram.createdDate = Json["createdDate"].Value;
+                hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
+                hologram.imagingStudySeriesId = Json["imagingStudySeriesId"].Value;
 
-                    /*                   
-                    hologram.hid = Json["hid"].Value;
-                    hologram.title = Json["title"].Value;
-                    hologram.description = Json["description"].Value;
-                    hologram.contentType = Json["contentType"].Value;
-                    hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
-                    hologram.bodySite = Json["bodySite"].Value;
-                    hologram.dateOfImaging = Json["dateOfImaging"].Value;
-                    hologram.creationDate = Json["creationDate"].Value;
-                    hologram.creationMode = Json["creationMode"].Value;
-                    hologram.creationDescription = Json["creationDescription"].Value;
-                    hologram.aid = Json["aid"].Value;
-                    hologram.pid = Json["pid"].Value;
-                     */
-                }
-                catch (Exception e)
-                {
-                    Debug.Log("Hologram mapping error: " + e);
-                }
+                /*                   
+                hologram.hid = Json["hid"].Value;
+                hologram.title = Json["title"].Value;
+                hologram.description = Json["description"].Value;
+                hologram.contentType = Json["contentType"].Value;
+                hologram.fileSizeInkb = Json["fileSizeInkb"].AsInt;
+                hologram.bodySite = Json["bodySite"].Value;
+                hologram.dateOfImaging = Json["dateOfImaging"].Value;
+                hologram.creationDate = Json["creationDate"].Value;
+                hologram.creationMode = Json["creationMode"].Value;
+                hologram.creationDescription = Json["creationDescription"].Value;
+                hologram.aid = Json["aid"].Value;
+                hologram.pid = Json["pid"].Value;
+                 */
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Failed to map hologram from response data! \n[Error message]: " + e);
             }            
             return hologram;
         }

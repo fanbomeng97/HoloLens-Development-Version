@@ -25,10 +25,20 @@ public class ConnectorTest : MonoBehaviour
 
         PatientInfo Patient = new PatientInfo();
         //Get patients with ID  
-        yield return StorageConnectionServer.GetPatient(Patient, "5d1bf4f17322a9283482fe7e");
+        yield return StorageConnectionServer.GetPatient(Patient, "666da72f-1dfa-427a-96a9-c9fb30bf7296");
 
         Debug.Log("=========================================");
         Debug.Log("From single patient: " + Patient.name.full);
+
+
+        List<HoloGrams> hologramList = new List<HoloGrams>();
+        //Get all patients
+        yield return StorageConnectionServer.GetMultipleHologram(hologramList, "IDs");
+        Debug.Log("=========================================");
+        foreach (HoloGrams hologram in hologramList)
+        {
+            Debug.Log("From List: " + hologram.subject.pid);
+        }
     }
 
     void LoadModel()

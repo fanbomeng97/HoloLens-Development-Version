@@ -78,7 +78,7 @@ namespace HoloRepository
                 }
                 catch (Exception e)
                 {
-                    Debug.Log("Failed to move the object: "+ e.Message);
+                    Debug.Log("Failed to move the object to specific scene! \n[Error message]: " + e.Message);
                 }              
             }
         }

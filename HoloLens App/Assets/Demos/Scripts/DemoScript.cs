@@ -45,7 +45,7 @@ public class DemoScript : MonoBehaviour
     IEnumerator getPateintByID()
     {
         PatientInfo patient = new PatientInfo();
-        yield return StorageConnectionServer.GetPatient(patient, "5d1bf4f17322a9283482fe7e");
+        yield return StorageConnectionServer.GetPatient(patient, "666da72f-1dfa-427a-96a9-c9fb30bf7296");
         Single.SetActive(true);
         try
         {
@@ -53,7 +53,7 @@ public class DemoScript : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log("Failed to set the text: " + e.Message);
+            Debug.Log("Failed to set the text! \n[Error message]" + e.Message);
         }    
     }
 
