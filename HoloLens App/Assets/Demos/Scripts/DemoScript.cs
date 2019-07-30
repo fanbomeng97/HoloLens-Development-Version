@@ -26,7 +26,7 @@ public class DemoScript : MonoBehaviour
     IEnumerator getAllPateint()
     {
         List<PatientInfo> patientList = new List<PatientInfo>();
-        yield return StorageConnectionServer.GetAllPatient(patientList);
+        yield return StorageConnectionServer.GetMultiplePatient(patientList,"IDs");
         All.SetActive(true);
         foreach (PatientInfo patient in patientList)
         {

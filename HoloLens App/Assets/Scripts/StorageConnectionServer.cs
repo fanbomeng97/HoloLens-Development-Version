@@ -25,11 +25,11 @@ namespace HoloRepository
             BaseUri = Uri;
         }
 
-        public static IEnumerator GetAllPatient(List<PatientInfo> patientList)
+        public static IEnumerator GetMultiplePatient(List<PatientInfo> patientList, string IDs)
         {
-            //string AllPatientUri = BaseUri + "/patients?=";
-            string AllPatientUri = BaseUri + "/patients";
-            yield return GetRequest(AllPatientUri);
+            //string MultiplePatientUri = BaseUri + "/patients?=" + "IDs";
+            string MultiplePatientUri = BaseUri + "/patients";
+            yield return GetRequest(MultiplePatientUri);
 
             patientList.Clear();
             if (WebRequestReturnData != null)
@@ -75,6 +75,28 @@ namespace HoloRepository
             {
                 Debug.Log("Failed to get the patient: " + e.Message);
             }                      
+        }
+
+        public static IEnumerator GetMultipleHologram(List<HoloGrams> hologramList, string IDs)
+        {
+            //string MultipleHolgramUri = BaseUri + "/holograms?=" + "IDs";
+            string MultipleHolgramUri = BaseUri + "/patients";
+            yield return GetRequest(MultipleHolgramUri);
+
+            hologramList.Clear();
+            if (WebRequestReturnData != null)
+            {
+                JSONNode InitialJsonData = JSON.Parse(WebRequestReturnData);
+                JSONArray JsonArray = InitialJsonData.AsArray;
+                foreach (JSONNode HologramJson in JsonArray)
+                {
+                    HoloGrams hologram = JsonToHologram(HologramJson);
+                    if (hologram.hid != null)
+                    {
+                        hologramList.Add(hologram);
+                    }
+                }
+            }
         }
 
         public static IEnumerator GetHologram(HoloGrams hologram, string HolgramID)

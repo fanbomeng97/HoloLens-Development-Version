@@ -15,7 +15,7 @@ public class ConnectorTest : MonoBehaviour
     {        
         List<PatientInfo> patientList = new List<PatientInfo>();
         //Get all patients
-        yield return StorageConnectionServer.GetAllPatient(patientList);
+        yield return StorageConnectionServer.GetMultiplePatient(patientList, "IDs");
 
         foreach (PatientInfo patient in patientList)
         {
