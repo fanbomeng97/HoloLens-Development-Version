@@ -76,6 +76,22 @@ public class GeneratePatientList : MonoBehaviour
 
             button.transform.SetParent(buttonTemplates.transform.parent, false);
         }
+
+        StreamReader reader = new StreamReader("./Assets/Sample/samplePatientsWithHolograms.json");
+        string json = reader.ReadToEnd();
+
+        patientList.Clear();
+
+        JSONNode InitialJsonData = JSON.Parse(json);
+        JSONArray JsonArray = InitialJsonData.AsArray;
+        foreach (JSONNode PatientJson in JsonArray)
+        {
+            Patient patient = HoloStorageClient.JsonToPatient(PatientJson);
+            if (patient.pid != null)
+            {
+                patientList.Add(patient);
+            }
+        }
     }*/
 
     void Start()

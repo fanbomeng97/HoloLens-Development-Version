@@ -17,6 +17,56 @@ namespace HoloRepository
 
         #endregion Properties
 
+        /*#region Set Method
+        /// <summary>
+        /// Set a name for the loaded model
+        /// </summary>
+        /// <param name="name">New name for the loaded model</param>
+        public static void SetModelName(string name)
+        {
+            Name = name;
+        }
+        /// <summary>
+        /// Set position for the loaded model
+        /// </summary>
+        /// <param name="position">Vector3 parameter, position in the scene</param>
+        public static void SetPostition(Vector3 position)
+        {
+            Position = position;
+        }
+        /// <summary>
+        /// Set rotation for the loaded model, the parameter should be a Vector3 object
+        /// </summary>
+        /// <param name="rotation">Vector3 parameter, rotation angles</param>
+        public static void SetRotation(Vector3 rotation)
+        {
+            Rotation = rotation;
+        }
+        /// <summary>
+        /// Real size in the scene, The longest side of the loaded object will be set to this value
+        /// </summary>
+        /// <param name="size">Real size in the unity scene</param>
+        public static void SetSize(float size)
+        {
+            Size = size;
+        }
+        /// <summary>
+        /// Determine whether the object could be manipulated
+        /// </summary>
+        /// <param name="manipulable">bool value, true for manipulation</param>
+        public static void SetManipulable(bool manipulable)
+        {
+            Manipulable = manipulable;
+        }
+        /// <summary>
+        /// Determine which scene you want to load the object
+        /// </summary>
+        /// <param name="sceneName">The name of the scene that you want to load</param>
+        public static void SetSceneName(string sceneName)
+        {
+            SceneName = sceneName;
+        }
+        #endregion Set Method*/
         #region Set Method
         public static void SetModelName(string name)
         {
