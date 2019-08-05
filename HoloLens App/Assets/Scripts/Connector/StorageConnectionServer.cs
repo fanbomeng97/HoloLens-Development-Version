@@ -29,7 +29,7 @@ namespace HoloRepository
             //string MultiplePatientUri = BaseUri + "/patients?=" + "IDs";
             string MultiplePatientUri = BaseUri + "/patients";
             yield return GetRequest(MultiplePatientUri);
-
+            Debug.Log(WebRequestReturnData);
             patientList.Clear();
             if (WebRequestReturnData != null)
             {
@@ -50,6 +50,7 @@ namespace HoloRepository
         {
             string GetPatientUri = BaseUri + "/patients/" + patientID;
             yield return GetRequest(GetPatientUri);
+            Debug.Log(WebRequestReturnData);
             try
             {
                 JSONNode PatientJson = JSON.Parse(WebRequestReturnData);
@@ -71,6 +72,8 @@ namespace HoloRepository
             hologramList.Clear();
             if (WebRequestReturnData != null)
             {
+                Debug.Log(WebRequestReturnData);
+
                 JSONNode InitialJsonData = JSON.Parse(WebRequestReturnData);
                 JSONArray JsonArray = InitialJsonData.AsArray;
                 foreach (JSONNode HologramJson in JsonArray)
@@ -197,7 +200,7 @@ namespace HoloRepository
                 address.street = Json["address"]["street"].Value;
                 address.city = Json["address"]["city"].Value;
                 address.state = Json["address"]["state"].Value;
-                address.postcode = Json["address"]["postcode"].AsInt;
+                address.postcode = Json["address"]["postcode"].Value;
                 patient.address = address;
 
                 /*

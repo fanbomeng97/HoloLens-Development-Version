@@ -46,6 +46,7 @@ public class GeneratePatientList : MonoBehaviour
 
                     button.GetComponent<PatientListComponent>().SetID(patient.pid);
                     button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.full + "\nGender: " + patient.gender + "\nDate of birth: " + patient.birthDate.Substring(0, 10));
+                    button.GetComponent<PatientListComponent>().SetImage(patient.gender);
 
                     button.transform.SetParent(buttonTemplates.transform.parent, false);
                 }
