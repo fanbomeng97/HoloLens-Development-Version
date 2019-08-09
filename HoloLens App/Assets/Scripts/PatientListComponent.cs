@@ -50,17 +50,6 @@ public class PatientListComponent : MonoBehaviour
 
     public void TurnToHologramPage()
     {
-        HologramsList.Clear();
-        foreach (PatientInfo patient in GeneratePatientList.patientList)
-        {
-            if (patient.pid == PatientID.text)
-            {
-                foreach (HoloGrams hologram in patient.holograms)
-                {
-                    HologramsList.Add(hologram);
-                }
-            }
-        }
         SceneManager.UnloadSceneAsync(2);
         SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
