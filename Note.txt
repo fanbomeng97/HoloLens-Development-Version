@@ -25,12 +25,28 @@ https://dl.dropboxusercontent.com/s/bqmqyc2r5ldyy1i/Duck.glb
 
 https://dl.dropboxusercontent.com/s/mazz1br428bos3z/WaterBottle.glb
 
+https://dl.dropboxusercontent.com/s/zcxegbd2rn8kict/bunny.drc.bytes
 
-with prefabs
-????list ????
-loader
+https://dl.dropboxusercontent.com/s/s2eyazt010bkgxy/abdomenSkeleton.drc
+
+https://dl.dropboxusercontent.com/s/gjjr7xebxm6tn5n/kawai.drc.bytes?dl=0
+
+https://dl.dropboxusercontent.com/s/ydbvqs886g9m94j/teddy.drc.bytes?dl=0
+
+https://dl.dropboxusercontent.com/s/a7gb5ibl8p2303q/abdomenSkeleton.drc.bytes?dl=0
+
+https://dl.dropboxusercontent.com/s/sgfzzlm9gx3phf9/abdomenSkeleton_fastQuad05.drc.bytes?dl=0
+
+uwp unirt editor togethor usage tool (like litjson)
+yi bu wen ti
 
 
-not with prefabs??json??
-loader ??url
-????id ??????ID
+before call Loadmodel, user can do Modelsetting position/scale/rotation
+litjson is not availiable in UWP application !!!
+//Quite useful tutorial from https://benjaminbeagley.wordpress.com/2013/10/14/calling-a-static-ienumerator-in-unity/
+import mrtk first !! the development version is Microsoft Mixed Reality Toolkit v2.0.0 RC2.1!!
+included SimpleJSON
+
+
+do not need to review the SimpleJSON files
+

@@ -98,6 +98,6 @@ public class GeneratePatientList : MonoBehaviour
     void Start()
     {
         //ReadJsonFile();
-        StartCoroutine(GetRequest("http://localhost:3001/api/v1/patients"));   
+        StartCoroutine(GetRequest("http://localhost:3200/api/v1/patients?pid=p-100,p-101,p-102"));   
     }
 }

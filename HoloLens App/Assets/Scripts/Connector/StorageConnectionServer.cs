@@ -14,7 +14,7 @@ namespace HoloRepository
     public class StorageConnectionServer : MonoBehaviour
     {
         #region Properties
-        private static string BaseUri = "http://localhost:3001/api/v1";
+        private static string BaseUri = "http://localhost:3200/api/v1";
         private static string WebRequestReturnData = null;
         #endregion Properties
 
@@ -26,8 +26,8 @@ namespace HoloRepository
 
         public static IEnumerator GetMultiplePatient(List<PatientInfo> patientList, string IDs)
         {
-            //string MultiplePatientUri = BaseUri + "/patients?=" + "IDs";
-            string MultiplePatientUri = BaseUri + "/patients";
+            string MultiplePatientUri = BaseUri + "/patients?pids=" + "IDs";
+            //string MultiplePatientUri = BaseUri + "/patients";
             yield return GetRequest(MultiplePatientUri);
             Debug.Log(WebRequestReturnData);
             patientList.Clear();
@@ -65,8 +65,8 @@ namespace HoloRepository
 
         public static IEnumerator GetMultipleHologram(List<HoloGrams> hologramList, string IDs)
         {
-            //string MultipleHolgramUri = BaseUri + "/holograms?=" + "IDs";
-            string MultipleHologramUri = BaseUri + "/holograms";
+            string MultipleHologramUri = BaseUri + "/holograms?pids=" + "IDs";
+            //string MultipleHologramUri = BaseUri + "/holograms";
             yield return GetRequest(MultipleHologramUri);
 
             hologramList.Clear();
@@ -107,8 +107,8 @@ namespace HoloRepository
         {
             WebRequestReturnData = null;
             //string GetHologramUri = BaseUri + "/holograms/" + HologramID + "/download";
-            //string GetHologramUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
-            string GetHologramUri = "https://dl.dropboxusercontent.com/s/uqfzst339hsyosf/500_abdomen_190mb.glb";         
+            string GetHologramUri = "https://holoblob.blob.core.windows.net/test/DamagedHelmet-18486331-5441-4271-8169-fcac6b7d8c29.glb";
+            //string GetHologramUri = "https://dl.dropboxusercontent.com/s/uqfzst339hsyosf/500_abdomen_190mb.glb";         
 
             Response response = new Response();
             try
