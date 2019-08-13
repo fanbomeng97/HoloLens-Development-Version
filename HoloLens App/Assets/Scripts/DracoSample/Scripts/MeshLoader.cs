@@ -22,7 +22,7 @@ public class MeshLoader : MonoBehaviour
             List<Mesh> meshes = new List<Mesh>();
     		DracoMeshLoader dracoLoader = new DracoMeshLoader();
 
-            int numFaces = dracoLoader.LoadFromURL(data, ref meshes);
+            int numFaces = dracoLoader.DecodeMesh(data, ref meshes);
             //int numFaces = dracoLoader.LoadMeshFromAsset(assetpath, ref meshes);
 
             if (numFaces > 0)

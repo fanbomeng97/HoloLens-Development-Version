@@ -201,11 +201,6 @@ public unsafe class DracoMeshLoader
 		return result;
 	}
 
-    public int LoadFromURL(byte[] data, ref List<Mesh> meshes)
-    {
-        int result = DecodeMesh(data, ref meshes);
-        return result;
-    }
     public unsafe int DecodeMesh (byte[] data, ref List<Mesh> meshes)
 	{
 		DracoToUnityMesh* tmpMesh;
