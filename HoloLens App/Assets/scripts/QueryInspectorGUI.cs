@@ -3,9 +3,9 @@ using UnityEditor;
 //[CustomEditor(typeof(ConnectorQuery))]
 
 public class QueryInspectorGUI
-    //public class QueryInspectorGUI : Editor
+//public class QueryInspectorGUI : Editor
 {
-    /*private SerializedObject test;
+ /*   private SerializedObject test;
     private SerializedProperty BaseUri, PatientInformation, HologramInformation, Patient;
     void OnEnable()
     {
