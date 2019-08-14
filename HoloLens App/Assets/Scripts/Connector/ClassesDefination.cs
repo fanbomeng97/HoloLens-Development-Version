@@ -76,7 +76,7 @@ namespace HoloRepository
         public string street { get; set; }
         public string city { get; set; }
         public string state { get; set; }
-        public int postcode { get; set; }
+        public string postcode { get; set; }
     }
 
     [System.Serializable]

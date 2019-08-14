@@ -46,6 +46,7 @@ public class GeneratePatientList : MonoBehaviour
 
                     button.GetComponent<PatientListComponent>().SetID(patient.pid);
                     button.GetComponent<PatientListComponent>().SetText("Patient name: " + patient.name.full + "\nGender: " + patient.gender + "\nDate of birth: " + patient.birthDate.Substring(0, 10));
+                    button.GetComponent<PatientListComponent>().SetImage(patient.gender);
 
                     button.transform.SetParent(buttonTemplates.transform.parent, false);
                 }
@@ -97,6 +98,6 @@ public class GeneratePatientList : MonoBehaviour
     void Start()
     {
         //ReadJsonFile();
-        StartCoroutine(GetRequest("http://localhost:3001/api/v1/patients"));   
+        StartCoroutine(GetRequest("http://localhost:3200/api/v1/patients?pid=p-100,p-101,p-102"));   
     }
 }
